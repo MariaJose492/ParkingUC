@@ -34,3 +34,7 @@ async def updatePersonController(person_id: str, updateData: dict):
         raise HTTPException(status_code=404, detail="Person not found or no changes made")
 
     return {"message": "Person updated successfully"}
+
+async def listPersonController():
+    persons = await personCollection.find().to_list(length=None)
+    return [Person(**person).dict() for person in persons]
