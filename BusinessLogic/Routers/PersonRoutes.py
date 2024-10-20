@@ -1,8 +1,8 @@
-from bson import ObjectId
-from fastapi import APIRouter, HTTPException
 from Models.person import Person
 from Controllers.PersonController import createPersonController
 from Controllers.PersonController import updatePersonController
+from Controllers.PersonController import listPersonController
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
@@ -24,5 +24,14 @@ async def updatePersonRoute(person_id: str, updateData: dict):
         return result
     except HTTPException as e:
         raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+# Path to list all persons
+@router.get("/listPersons/")
+async def listPersonsRoute():
+    try:
+        persons = await listPersonController()
+        return persons
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
