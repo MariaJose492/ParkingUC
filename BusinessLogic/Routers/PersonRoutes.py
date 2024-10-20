@@ -1,10 +1,12 @@
+from bson import ObjectId
 from fastapi import APIRouter, HTTPException
 from Models.person import Person
 from Controllers.PersonController import createPersonController
+from Controllers.PersonController import updatePersonController
 
 router = APIRouter()
 
-# Ruta para crear una persona
+# Path to create a person
 @router.post("/createPerson/")
 async def createPersonRoute(person: Person):
     try:
@@ -12,3 +14,15 @@ async def createPersonRoute(person: Person):
         return {"message": "Persona creada con éxito", "person_id": person_id}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+# Route to update a person's phone and/or email address
+@router.put("/updatePerson/{person_id}")
+async def updatePersonRoute(person_id: str, updateData: dict):
+    try:
+        result = await updatePersonController(person_id, updateData)
+        return result
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
