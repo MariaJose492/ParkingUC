@@ -12,7 +12,7 @@ mongo_uri = os.getenv("MONGO_CONNECTION")
 client = motor.motor_asyncio.AsyncIOMotorClient(mongo_uri)
 
 # Conectar a la base de datos
-db = client["ParkingUC"]
+db = client["parkingUC"]
 
 # Acceder a la colección
 personCollection = db["person"]
