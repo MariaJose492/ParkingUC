@@ -1,0 +1,43 @@
+/* edit-user.page.scss */
+
+/* Estilo general para el contenedor */
+ion-content {
+    padding: 16px; /* Espaciado alrededor del contenido */
+  }
+  
+  /* Estilo para el ion-card */
+  ion-card {
+    padding: 16px; /* Espaciado interno del card */
+    border-radius: 8px; /* Bordes redondeados para el card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  /* Estilo para los elementos ion-item */
+  ion-item {
+    margin-bottom: 16px; /* Espaciado entre los elementos del formulario */
+  }
+  
+  /* Estilo para el botón de guardar */
+  ion-button {
+    background-color: #3880ff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente del botón */
+    padding: 12px; /* Espaciado interno del botón */
+  
+    &:hover {
+      background-color: #3171e0; /* Color de fondo al pasar el mouse */
+    }
+  }
+  
+  /* Estilo para el título */
+  ion-title {
+    font-size: 24px; /* Tamaño de la fuente del título */
+    font-weight: bold; /* Negrita */
+  }
+  
+  /* Estilo para etiquetas de entrada */
+  ion-label {
+    font-size: 16px; /* Tamaño de la fuente de la etiqueta */
+  }
+  
