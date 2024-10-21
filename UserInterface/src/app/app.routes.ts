@@ -13,9 +13,22 @@ export const routes: Routes = [
   {
     path: 'home-page',
     loadComponent: () => import('./home-page/home-page.page').then( m => m.HomePagePage)
-  },  {
+  },
+  {
     path: 'edit-user',
     loadComponent: () => import('./edit-user/edit-user.page').then( m => m.EditUserPage)
   },
+  {
+    path: 'home-page',
+    loadComponent: () => import('./home-page/home-page.page').then( m => m.HomePagePage)
+  },
+  {
+    path: 'create-person',
+    loadComponent: () => import('./create-person/create-person.page').then( m => m.CreatePersonPage)
+  },
 
 ];
+
+
+];
+
