@@ -18,7 +18,6 @@ export const routes: Routes = [
     path: 'edit-user',
     loadComponent: () => import('./edit-user/edit-user.page').then( m => m.EditUserPage)
   },
-
   {
     path: 'create-person',
     loadComponent: () => import('./create-person/create-person.page').then( m => m.CreatePersonPage)
