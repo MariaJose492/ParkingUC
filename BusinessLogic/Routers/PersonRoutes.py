@@ -2,6 +2,7 @@ from Models.person import Person
 from Controllers.PersonController import createPersonController
 from Controllers.PersonController import updatePersonController
 from Controllers.PersonController import listPersonController
+from Controllers.PersonController import deletePersonController
 from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
@@ -33,5 +34,16 @@ async def listPersonsRoute():
     try:
         persons = await listPersonController()
         return persons
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+# route to eliminate a person if they have records with an exit greater than 15 days
+@router.delete("/deletePerson/{personId}")
+async def deletePersonRoute(personId: str):
+    try:
+        result = await deletePersonController(personId)
+        return result
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

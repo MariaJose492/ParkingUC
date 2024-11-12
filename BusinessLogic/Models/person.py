@@ -3,7 +3,7 @@ from typing import Optional
 
 class Person(BaseModel):
     name: str
-    lastname: str
+    lastName: str
     code: int
     phone: str
     charge: str
