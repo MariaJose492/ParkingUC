@@ -14,7 +14,6 @@ async def createPersonController(personData: Person):
 
 # Function to update a person by id
 async def updatePersonController(person_id: str, updateData: dict):
-
     if not updateData:
         raise HTTPException(
             status_code=400, detail="No se proporcionaron datos para la actualización.")
@@ -24,7 +23,6 @@ async def updatePersonController(person_id: str, updateData: dict):
         update_fields['phone'] = updateData['phone']
     if 'email' in updateData:
         update_fields['email'] = updateData['email']
-
     if not update_fields:
         raise HTTPException(
             status_code=400, detail="No se proporcionaron campos válidos para la actualización.")
