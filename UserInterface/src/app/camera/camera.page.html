@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="camera">
+    <div class="camera-placeholder">CAMERA</div>
+  </div>
+
+  <ion-card class="info-section">
+    <ion-card-header>
+      <ion-card-title class="Title">Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Name</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">LastName</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Charge</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Vehicle Plate</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Code</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email"></ion-input>
+              <ion-button fill="clear" slot="end">
+                <ion-icon name="pencil-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Phone</ion-label>
+              <ion-input type="tel"></ion-input>
+              <ion-button fill="clear" slot="end">
+                <ion-icon name="pencil-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Vehicle Type</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="enter-button">
+    <ion-button expand="block">Enter</ion-button>
+  </div>
+</ion-content>

@@ -25,10 +25,10 @@ export const routes: Routes = [
   {
     path: 'create-person',
     loadComponent: () => import('./create-person/create-person.page').then( m => m.CreatePersonPage)
+  },  {
+    path: 'camera',
+    loadComponent: () => import('./camera/camera.page').then( m => m.CameraPage)
   },
 
-];
-
 
 ];
-
