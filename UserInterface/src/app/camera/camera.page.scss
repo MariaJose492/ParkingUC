@@ -1,0 +1,43 @@
+.camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+
+  .camera-placeholder {
+    width: 50%;
+    height: 300px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    border: 2px dashed #999;
+  }
+}
+
+.Title {
+  display: flex;
+  justify-content: center;
+}
+
+.info-section {
+  margin: 20px;
+}
+
+.enter-button {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+ion-item{
+  width: 80%;
+}
+
+ion-col{
+  width: 50%;
+  margin: 25px;
+}
