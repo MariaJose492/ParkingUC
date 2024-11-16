@@ -17,7 +17,7 @@ async def listRegisterController():
 
 
 #* Function to get a vehicle by plate 
-async def getRegisterByPlate(vehiclePlate: int):
+async def getRegisterByPlate(vehiclePlate: str):
     register = await registerCollection.find_one({"vehiclePlate": vehiclePlate})
     if register:
         register["_id"] = str(register["_id"])
@@ -25,7 +25,7 @@ async def getRegisterByPlate(vehiclePlate: int):
 
 
 #* Function to get register that have the dateTimeExit null, by vehiclePlate.
-async def getRegisterByPlateAndDateTimeExit(vehiclePlate: int):
+async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
     register = await registerCollection.find_one({"vehiclePlate": vehiclePlate, "dateTimeExit": None})
     return register
 

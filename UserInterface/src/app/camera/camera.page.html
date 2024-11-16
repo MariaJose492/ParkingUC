@@ -34,13 +34,17 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Vehicle Plate</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input [(ngModel)]="register.vehiclePlate" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Data time Exit</ion-label>
+              <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-label position="stacked">Code</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-label position="stacked">Person Code</ion-label>
+              <ion-input [(ngModel)]="register.personCode" [ngModelOptions]="{standalone: true}" type="number"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Email</ion-label>
@@ -58,7 +62,11 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Vehicle Type</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input [(ngModel)]="register.vehicleType" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Data time Entrance</ion-label>
+              <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -67,6 +75,6 @@
   </ion-card>
 
   <div class="enter-button">
-    <ion-button expand="block">Enter</ion-button>
+    <ion-button (click)="createRegister()" expand="block">Enter</ion-button>
   </div>
 </ion-content>
