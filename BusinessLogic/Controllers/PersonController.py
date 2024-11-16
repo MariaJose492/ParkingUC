@@ -13,7 +13,7 @@ async def createPersonController(personData: Person):
 
 
 # Function to update a person by id
-async def updatePersonController(person_id: str, updateData: dict):
+async def updatePersonController(personId: str, updateData: dict):
     if not updateData:
         raise HTTPException(
             status_code=400, detail="No se proporcionaron datos para la actualización.")
@@ -28,7 +28,7 @@ async def updatePersonController(person_id: str, updateData: dict):
             status_code=400, detail="No se proporcionaron campos válidos para la actualización.")
 
     result = await personCollection.update_one(
-        {"_id": ObjectId(person_id)},
+        {"_id": ObjectId(personId)},
         {"$set": update_fields}
     )
 
