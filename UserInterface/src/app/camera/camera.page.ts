@@ -21,7 +21,6 @@ import {
   IonInput, 
   IonIcon 
 } from '@ionic/angular/standalone';
-import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-camera',

@@ -11,6 +11,9 @@ Para poder tener el archivo .env, la siguiente librería:
 Para la conexión de la base de datos
 * pip install motor 
 
+Para el manejo del CORS para manejar solicitudes de origen cruzado
+* pip install fastapi[all] 
+
 El siguiente es un el comando para ejecutar el microservicio:
 * uvicorn main:app --reload 
 
