@@ -16,3 +16,6 @@ db = client["parkingUC"]
 
 # Acceder a la colección
 personCollection = db["person"]
+
+# Acceder a la colección registro
+registerCollection = db["register"]
