@@ -9,7 +9,9 @@
 
 <ion-content [fullscreen]="true">
   <div class="camera">
-    <div class="camera-placeholder">CAMERA</div>
+    <video #videoElement autoplay playsinline></video>
+
+    <canvas #canvasElement style="display: none;"></canvas>
   </div>
 
   <ion-card class="info-section">

@@ -13,3 +13,6 @@ Para la conexión de la base de datos
 
 El siguiente es un el comando para ejecutar el microservicio:
 * uvicorn main:app --reload 
+
+URL BACKEND
+* http://127.0.0.1:8000/ 
