@@ -1,80 +1,93 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true" class="transparent-header">
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="camera">
-    <div class="camera-placeholder">CAMERA</div>
-  </div>
+  <!-- Contenedor principal para todo el contenido -->
+  <div class="main-container">
 
-  <ion-card class="info-section">
-    <ion-card-header>
-      <ion-card-title class="Title">Information</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label position="stacked">Name</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">LastName</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Charge</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Vehicle Plate</ion-label>
-              <ion-input [(ngModel)]="register.vehiclePlate" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Data time Exit</ion-label>
-              <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label position="stacked">Person Code</ion-label>
-              <ion-input [(ngModel)]="register.personCode" [ngModelOptions]="{standalone: true}" type="number"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Email</ion-label>
-              <ion-input type="email"></ion-input>
-              <ion-button fill="clear" slot="end">
-                <ion-icon name="pencil-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Phone</ion-label>
-              <ion-input type="tel"></ion-input>
-              <ion-button fill="clear" slot="end">
-                <ion-icon name="pencil-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Vehicle Type</ion-label>
-              <ion-input [(ngModel)]="register.vehicleType" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Data time Entrance</ion-label>
-              <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+    <!-- Contenedor de la flecha y el ícono de Home -->
+    <div class="header-content">
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </div>
+    
 
-  <div class="enter-button">
-    <ion-button (click)="createRegister()" expand="block">Enter</ion-button>
+    <!-- Sección de Cámara -->
+    <div class="camera" style="margin-top: 20px;">
+      <div class="camera-placeholder">CAMERA</div>
+    </div>
+
+    <!-- Sección de Información -->
+    <ion-card class="info-section" style="margin-top: 20px;">
+      <ion-card-header>
+        <ion-card-title class="Title">Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="column1">
+              <ion-item>
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">LastName</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Charge</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Vehicle Plate</ion-label>
+                <ion-input [(ngModel)]="register.vehiclePlate" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Data time Exit</ion-label>
+                <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col class="column2">
+              <ion-item>
+                <ion-label position="stacked">Code</ion-label>
+                <ion-input [(ngModel)]="register.personCode" [ngModelOptions]="{standalone: true}" type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input type="email"></ion-input>
+                <ion-button fill="clear" slot="end">
+                  <ion-icon name="pencil-outline"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Phone</ion-label>
+                <ion-input type="tel"></ion-input>
+                <ion-button fill="clear" slot="end">
+                  <ion-icon name="pencil-outline"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Vehicle Type</ion-label>
+                <ion-input [(ngModel)]="register.vehicleType" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Data time Entrance</ion-label>
+                <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botón de entrada -->
+    <div class="enter-button" style="margin-top: 20px;">
+      <ion-button (click)="createRegister()" expand="block" fill="fill">Enter</ion-button>
+    </div>
+
   </div>
 </ion-content>
