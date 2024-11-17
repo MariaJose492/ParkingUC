@@ -24,7 +24,7 @@
 
     <ion-item>
       <ion-label position="floating">Phone</ion-label>
-      <ion-input [(ngModel)]="person.phone" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
+      <ion-input [(ngModel)]="person.phone" [ngModelOptions]="{standalone: true}" maxlength="10" minlength="10" type="text" required></ion-input>
     </ion-item>
 
     <ion-item>

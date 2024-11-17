@@ -57,6 +57,8 @@ export class CameraPage implements OnInit, OnDestroy {
   @ViewChild('canvasElement', { static: false }) canvasElement!: ElementRef; 
   stream: MediaStream | null = null; 
 
+    name:String= '';
+    lastName:String = '';
 
 
   constructor(private apiService: ApiService, private registerService: RegisterService) {}
@@ -72,9 +74,6 @@ export class CameraPage implements OnInit, OnDestroy {
     dateTimeEntrance: '',
     dateTimeExit: ''
   }
-
-  name: string = '';
-  lastName: string = '';
 
   // Call the service to create a register
   createRegister() {
@@ -140,7 +139,7 @@ export class CameraPage implements OnInit, OnDestroy {
   async activateCamera() {
     try {
       this.stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' }, // Cámara trasera
+        video: { facingMode: 'environment' },
         audio: false,
       });
 
@@ -151,8 +150,12 @@ export class CameraPage implements OnInit, OnDestroy {
     }
   }
   processBackendJson(json:any){
-    this.name = json.name;
-    this.lastName = json.lastName;
+    if (typeof json === 'string') {
+      json = JSON.parse(json); 
+    }
+
+    this.name = json.name || '';
+    this.lastName = json.lastName || '';
     this.register.personCode = json.code;
   }
 
