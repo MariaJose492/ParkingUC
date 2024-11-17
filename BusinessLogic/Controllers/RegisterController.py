@@ -1,10 +1,15 @@
-from Config.DatabaseConnection import registerCollection
+from Config.DatabaseConnection import registerCollection, personCollection
 from Models.register import Register
 from fastapi import HTTPException
 from datetime import datetime, timedelta
 
 #* Function to create a register
 async def createRegisterController(registerData: Register):
+    personCode = registerData.personCode
+    if not personCode:
+        raise HTTPException(status_code=400, detail="Código de persona no proporcionado")
+    person = getPersonByPersonCode(personCode)
+    print(person)
     newRegister = registerData.dict()
     result = await registerCollection.insert_one(newRegister)
     return str(result.inserted_id)
@@ -29,7 +34,19 @@ async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
     register = await registerCollection.find_one({"vehiclePlate": vehiclePlate, "dateTimeExit": None})
     return register
 
-
+#* Function to get a person by codePerson
+async def getPersonByPersonCode(personCode: int):
+    person = await personCollection.find_one({"code": personCode})
+    if not person:
+        raise HTTPException(status_code=404, detail="Persona no encontrada")
+    return {
+        "name": person["name"],
+        "lastName": person["lastName"],
+        "charge": person["charge"],
+        "phone": person["phone"],
+        "email": person["email"]
+    }
+    
 #* Function to delete a vehicle by plate
 #  Parameters:
 #  vehiclePlate (int): The vehicle plate to delete.
@@ -41,15 +58,15 @@ async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
 async def deleteRegisterByPlate(vehiclePlate: int):
     register = await getRegisterByPlate(vehiclePlate)    
     if not register:
-        return False      
+        raise HTTPException(status_code=404, detail="Registro no encontrado")     
     dateTimeExit = register.get("dateTimeExit")
-    if not dateTimeExit:
-        return False  
+    if dateTimeExit is None:
+        raise HTTPException(status_code=400, detail="El registro no tiene una fecha de salida")  
 
     current_time = datetime.now()
     time_diff = current_time - dateTimeExit    
     if time_diff <= timedelta(days=15):
-        return False 
+        raise HTTPException(status_code=400, detail="No se puede eliminar el registro antes de 15 de su fecha de salida")
     
     result = await registerCollection.delete_one({"vehiclePlate": vehiclePlate})
     return result.deleted_count > 0
@@ -64,11 +81,7 @@ async def updateRegisterController(vehiclePlate: str, updateData: dict):
     if not register:
         raise HTTPException(status_code=400, detail="El vehículo ya registró su salida")
     
-    update_fields = {}
-    if 'dateTimeExit' in updateData:
-        update_fields['dateTimeExit'] = updateData['dateTimeExit']
-    if not update_fields:
-        raise HTTPException(status_code=400, detail="No se proporcionaron campos válidos para la actualización.")
+    update_fields = {'dateTimeExit': datetime.now()}
 
     result = await registerCollection.update_one(
         {"_id": (register.get("_id"))},

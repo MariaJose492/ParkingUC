@@ -1,11 +1,7 @@
 from Models.register import Register
 from fastapi import APIRouter, HTTPException
 from datetime import datetime, timedelta
-from Controllers.RegisterController import createRegisterController
-from Controllers.RegisterController import listRegisterController
-from Controllers.RegisterController import deleteRegisterByPlate
-from Controllers.RegisterController import getRegisterByPlate
-from Controllers.RegisterController import updateRegisterController
+from Controllers.RegisterController import *
 router = APIRouter()
 
 # Path to create a register
@@ -73,5 +69,17 @@ async def updateRegisterRoute(vehiclePlate: str, updateData: dict):
         return result
     except HTTPException as e:
         raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Path to get person by personCode
+@router.get("/getPerson/{personCode}")
+async def getPersonByPersonCodeRoute(personCode: int):
+    try:
+        person = await getPersonByPersonCode(personCode)
+        if not person:
+            raise HTTPException(
+                status_code=404, detail="Persona no encontrada")
+        return person
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
