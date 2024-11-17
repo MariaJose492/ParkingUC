@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { 
   IonContent, 
   IonHeader, 
@@ -53,7 +54,9 @@ import { RegisterService } from 'Services/RegisterService/register.service';
 })
 export class CameraPage implements OnInit {
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService, private router: Router) { }
+
+  
 
   ngOnInit() {
     //
@@ -126,6 +129,10 @@ export class CameraPage implements OnInit {
         console.error('Error al listar lso registros:', error);
       }
     );
+  }
+
+  goHome() {
+    this.router.navigate(['/home']); // Redirige a la ruta '/home'
   }
 
 }
