@@ -1,45 +1,65 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Crear Persona</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true" class="transparent-header">
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <form>
+<ion-content [fullscreen]="true">
+  <div class="main-container">
 
-    <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input [(ngModel)]="person.name" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
-    </ion-item>
+    <div class="header-content">
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </div>
 
-    <ion-item>
-      <ion-label position="floating">Last Name</ion-label>
-      <ion-input [(ngModel)]="person.lastName" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Code</ion-label>
-      <ion-input [(ngModel)]="person.code" [ngModelOptions]="{standalone: true}" type="tel" required></ion-input>
-    </ion-item>
+    <div class="logo-section">
+      <h1>Logo</h1>
+      <h2>Register</h2>
+      <p>Registration Form for Users of the University of Caldas</p>
+    </div>
 
-    <ion-item>
-      <ion-label position="floating">Phone</ion-label>
-      <ion-input [(ngModel)]="person.phone" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="column1">
+          <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input [(ngModel)]="person.name" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Charge</ion-label>
-      <ion-input [(ngModel)]="person.charge" [ngModelOptions]="{standalone: true}" type="text" required></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input [(ngModel)]="person.lastName" [ngModelOptions]="{standalone: true}" type="text"
+              required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Charge</ion-label>
+            <ion-input [(ngModel)]="person.charge" [ngModelOptions]="{standalone: true}" type="text"
+              required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="column2">
+          <ion-item>
+            <ion-label position="floating">Code</ion-label>
+            <ion-input [(ngModel)]="person.code" [ngModelOptions]="{standalone: true}" type="tel" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="person.email" [ngModelOptions]="{standalone: true}" type="email"
+              required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Phone</ion-label>
+            <ion-input [(ngModel)]="person.phone" [ngModelOptions]="{standalone: true}" type="text"
+              required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="person.email" [ngModelOptions]="{standalone: true}" type="email" required></ion-input>
-    </ion-item>
-
-    <div class="ion-margin-top ion-text-center">
+    <div class="enter-button">
       <ion-button (click)="createPerson()">Guardar</ion-button>
     </div>
-  
-  </form>
+  </div>
 </ion-content>

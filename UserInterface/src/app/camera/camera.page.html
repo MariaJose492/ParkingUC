@@ -2,10 +2,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- Contenedor principal para todo el contenido -->
   <div class="main-container">
 
-    <!-- Contenedor de la flecha y el ícono de Home -->
     <div class="header-content">
       <ion-button fill="clear" (click)="goHome()">
         <ion-icon name="arrow-back-outline"></ion-icon>
@@ -16,12 +14,10 @@
     </div>
     
 
-    <!-- Sección de Cámara -->
     <div class="camera" style="margin-top: 20px;">
       <div class="camera-placeholder">CAMERA</div>
     </div>
 
-    <!-- Sección de Información -->
     <ion-card class="info-section" style="margin-top: 20px;">
       <ion-card-header>
         <ion-card-title class="Title">Information</ion-card-title>
@@ -47,8 +43,8 @@
                 <ion-input [(ngModel)]="register.vehiclePlate" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label position="stacked">Data time Exit</ion-label>
-                <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
+                <ion-label position="stacked">Data time Entrance</ion-label>
+                <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col class="column2">
@@ -75,8 +71,8 @@
                 <ion-input [(ngModel)]="register.vehicleType" [ngModelOptions]="{standalone: true}" type="text"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label position="stacked">Data time Entrance</ion-label>
-                <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
+                <ion-label position="stacked">Data time Exit</ion-label>
+                <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}" presentation="date-time"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -84,9 +80,8 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Botón de entrada -->
     <div class="enter-button" style="margin-top: 20px;">
-      <ion-button (click)="createRegister()" expand="block" fill="fill">Enter</ion-button>
+      <ion-button (click)="createRegister()">Enter</ion-button>
     </div>
 
   </div>
