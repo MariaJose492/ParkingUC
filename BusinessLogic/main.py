@@ -1,8 +1,11 @@
 from fastapi import FastAPI
-from Routers import PersonRoutes, RegisterRoutes
+from Routers import PersonRoutes, RegisterRoutes, ProcessingRoutes
 from fastapi.middleware.cors import CORSMiddleware
+import pytesseract
+
 app = FastAPI()
 
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 # Configurar orígenes permitidos
 # Origen del frontend Angular en desarrollo
 # Alternativa si usas otra IP local
@@ -23,6 +26,7 @@ app.add_middleware(
 # Registrar rutas
 app.include_router(PersonRoutes.router)
 app.include_router(RegisterRoutes.router)
+app.include_router(ProcessingRoutes.router, prefix="/api/v1", tags=["Processing"])
 
 @app.get("/")
 async def root():

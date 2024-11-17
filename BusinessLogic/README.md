@@ -15,7 +15,8 @@ Para el manejo del CORS para manejar solicitudes de origen cruzado
 * pip install fastapi[all] 
 
 El siguiente es un el comando para ejecutar el microservicio:
-* uvicorn main:app --reload 
+* uvicorn main:app --reload
+* python -m uvicorn main:app --reload
 
 URL BACKEND
 * http://127.0.0.1:8000/ 

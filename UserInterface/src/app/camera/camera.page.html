@@ -12,6 +12,8 @@
     <video #videoElement autoplay playsinline></video>
 
     <canvas #canvasElement style="display: none;"></canvas>
+
+    <ion-button expand="block" (click)="captureAndSendImage()">Capture</ion-button>
   </div>
 
   <ion-card class="info-section">
@@ -24,11 +26,11 @@
           <ion-col>
             <ion-item>
               <ion-label position="stacked">Name</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input [(ngModel)]="name" type="text"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">LastName</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input [(ngModel)]="lastName" type="text" readonly></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Charge</ion-label>
