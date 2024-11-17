@@ -24,7 +24,6 @@ import {
 } from '@ionic/angular/standalone';
 import { ApiService } from '../../../Services/CameraService/api.service';
 import { RegisterService } from 'Services/RegisterService/register.service';
-import { RegisterService } from 'services/RegisterService/register.service';
 
 @Component({
   selector: 'app-camera',
@@ -59,14 +58,9 @@ export class CameraPage implements OnInit, OnDestroy {
   @ViewChild('canvasElement', { static: false }) canvasElement!: ElementRef; 
   stream: MediaStream | null = null; 
 
-    name:String= '';
-    lastName:String = '';
-  constructor(private registerService: RegisterService, private router: Router) { }
-
-  
-
-
-  constructor(private apiService: ApiService, private registerService: RegisterService) {}
+  name:String= '';
+  lastName:String = '';
+  constructor(private apiService: ApiService, private registerService: RegisterService, private router: Router) {}
 
   async ngOnInit() {
     await this.activateCamera(); 
@@ -198,9 +192,10 @@ export class CameraPage implements OnInit, OnDestroy {
     }
   }
 
-}
   goHome() {
     this.router.navigate(['/home']); // Redirige a la ruta '/home'
   }
 
 }
+  
+
