@@ -1,40 +1,99 @@
+.main-container{
+  background-color: white;
+  margin: 20px;
+}
+
+.transparent-header {
+  background: transparent !important;
+  height: 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: transparent;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+ion-button {
+  color: black; 
+}
+
+ion-icon {
+  font-size: 20px; 
+  color: black; 
+}
+
+
 .camera {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin: 40px 0;
+  padding-top: 40px;
+}
 
-  .camera-placeholder {
-    width: 50%;
-    height: 300px;
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    font-size: 18px;
-    text-align: center;
-    border: 2px dashed #999;
-  }
+.camera-placeholder {
+  width: 60%;
+  height: 200px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+  border: 2px dashed #999;
 }
 
 .Title {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .info-section {
-  margin: 20px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 0;
+}
+
+ion-grid {
+  width: 100%;
+}
+
+ion-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+ion-item {
+  --inner-padding-end: 0;
+  width: 100%;
+  border-radius: 8px;
 }
 
 .enter-button {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 30px;
+  padding-bottom: 40px;
 }
 
-ion-item{
-  width: 80%;
+.enter-button ion-button {
+  width: 15%;
+  border-radius: 100px;
+  background-color: #e0e0e0;
+  color: #000;
 }
 
 ion-col{
@@ -48,3 +107,22 @@ video {
   border-radius: 10px;
   background: black;
 }
+.column1{
+  margin-right: 50px;
+}
+
+.column2{
+  margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+  ion-row {
+    display: block;
+    flex-direction: column; 
+  }
+  .column1, .column2{
+    margin: 0;
+  }
+}
+
+

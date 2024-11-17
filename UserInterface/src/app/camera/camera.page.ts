@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { 
   IonContent, 
   IonHeader, 
@@ -23,6 +24,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ApiService } from '../../../Services/CameraService/api.service';
 import { RegisterService } from 'Services/RegisterService/register.service';
+import { RegisterService } from 'services/RegisterService/register.service';
 
 @Component({
   selector: 'app-camera',
@@ -59,6 +61,9 @@ export class CameraPage implements OnInit, OnDestroy {
 
     name:String= '';
     lastName:String = '';
+  constructor(private registerService: RegisterService, private router: Router) { }
+
+  
 
 
   constructor(private apiService: ApiService, private registerService: RegisterService) {}
@@ -72,20 +77,24 @@ export class CameraPage implements OnInit, OnDestroy {
     personCode: 0,
     vehiclePlate: '',
     dateTimeEntrance: '',
-    dateTimeExit: ''
+    dateTimeExit: null,
   }
 
   // Call the service to create a register
   createRegister() {
-    if (this.register.vehicleType && this.register.personCode && this.register.vehiclePlate && this.register.dateTimeEntrance ) {
+    if (this.register.vehicleType && this.register.personCode && this.register.vehiclePlate ) {
       
-      console.log('Datos que se enviarán al backend:', this.register);
-      
+      if (this.register.dateTimeEntrance){
+        this.register.dateTimeEntrance = new Date(this.register.dateTimeEntrance).toISOString();
+      } else {
+        this.register.dateTimeEntrance = new Date().toISOString();
+      }
+
       this.registerService.createRegister(this.register).subscribe(
         (response) => {
           console.log('Registro creado:', response);
           alert('Registro creado con éxito');
-          this.register = { vehicleType: '', personCode: 0, vehiclePlate: '', dateTimeEntrance: '', dateTimeExit: '' };
+          this.register = { vehicleType: '', personCode: 0, vehiclePlate: '', dateTimeEntrance: new Date().toISOString(), dateTimeExit: null };
         },
         (error) => {
           console.error('Error al crear el registro:', error);
@@ -93,7 +102,7 @@ export class CameraPage implements OnInit, OnDestroy {
         }
       );
     } else {
-      alert('Por favor, llena todos los campos');
+      alert('Por favor, llena todos los campos requeridos');
     }
   }
   // Call the service to update a register
@@ -187,6 +196,11 @@ export class CameraPage implements OnInit, OnDestroy {
     if (this.stream) {
       this.stream.getTracks().forEach((track) => track.stop());
     }
+  }
+
+}
+  goHome() {
+    this.router.navigate(['/home']); // Redirige a la ruta '/home'
   }
 
 }
