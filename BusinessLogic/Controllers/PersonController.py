@@ -7,9 +7,14 @@ from datetime import datetime, timedelta
 
 # Function to create a person
 async def createPersonController(personData: Person):
+    existing_person = await personCollection.find_one({"code": personData.code})
+    if existing_person:
+        raise HTTPException(status_code=400, detail="El código de persona ya existe")
     newPerson = personData.dict()
     result = await personCollection.insert_one(newPerson)
     return str(result.inserted_id)
+
+
 
 
 # Function to update a person by id
