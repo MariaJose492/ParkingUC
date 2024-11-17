@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonItem, IonLabel, IonInput,IonIcon, IonButton, IonBackButton, IonGrid, IonRow, IonCol} from '@ionic/angular/standalone';
 import { PersonService } from 'Services/PersonService/person.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './create-person.page.html',
   styleUrls: ['./create-person.page.scss'],
   standalone: true,
-  imports: [FormsModule,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, IonItem, IonLabel, IonInput]
+  imports: [FormsModule,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonBackButton, IonCol, IonGrid, IonRow, IonIcon]
 })
 export class CreatePersonPage implements OnInit {
 
@@ -23,7 +25,7 @@ export class CreatePersonPage implements OnInit {
     email: ''
   };
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService, private router: Router) { }
 
   ngOnInit() {
     /*  */
@@ -86,5 +88,10 @@ export class CreatePersonPage implements OnInit {
         console.error('Error al listar personas:', error);
       }
     );
+  }
+
+  // Redirige a la ruta '/home'
+  goHome() {
+    this.router.navigate(['/home']); 
   }
 }
