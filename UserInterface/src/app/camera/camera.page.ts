@@ -21,7 +21,7 @@ import {
   IonInput, 
   IonIcon 
 } from '@ionic/angular/standalone';
-import { RegisterService } from 'Services/RegisterService/register.service';
+import { RegisterService } from 'services/RegisterService/register.service';
 
 @Component({
   selector: 'app-camera',
@@ -64,20 +64,24 @@ export class CameraPage implements OnInit {
     personCode: 0,
     vehiclePlate: '',
     dateTimeEntrance: '',
-    dateTimeExit: ''
+    dateTimeExit: null,
   }
 
   // Call the service to create a register
   createRegister() {
-    if (this.register.vehicleType && this.register.personCode && this.register.vehiclePlate && this.register.dateTimeEntrance ) {
+    if (this.register.vehicleType && this.register.personCode && this.register.vehiclePlate ) {
       
-      console.log('Datos que se enviarán al backend:', this.register);
-      
+      if (this.register.dateTimeEntrance){
+        this.register.dateTimeEntrance = new Date(this.register.dateTimeEntrance).toISOString();
+      } else {
+        this.register.dateTimeEntrance = new Date().toISOString();
+      }
+
       this.registerService.createRegister(this.register).subscribe(
         (response) => {
           console.log('Registro creado:', response);
           alert('Registro creado con éxito');
-          this.register = { vehicleType: '', personCode: 0, vehiclePlate: '', dateTimeEntrance: '', dateTimeExit: '' };
+          this.register = { vehicleType: '', personCode: 0, vehiclePlate: '', dateTimeEntrance: new Date().toISOString(), dateTimeExit: null };
         },
         (error) => {
           console.error('Error al crear el registro:', error);
@@ -85,7 +89,7 @@ export class CameraPage implements OnInit {
         }
       );
     } else {
-      alert('Por favor, llena todos los campos');
+      alert('Por favor, llena todos los campos requeridos');
     }
   }
   // Call the service to update a register

@@ -1,8 +1,5 @@
 from Models.person import Person
-from Controllers.PersonController import createPersonController
-from Controllers.PersonController import updatePersonController
-from Controllers.PersonController import listPersonController
-from Controllers.PersonController import deletePersonController
+from Controllers.PersonController import *
 from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
