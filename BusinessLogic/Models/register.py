@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 
 class Register(BaseModel):
-    vehicleType: str
+    vehicleType: Optional[str] = None
     personCode: int
     vehiclePlate: str
     dateTimeEntrance: datetime = Field(default_factory=datetime.now)

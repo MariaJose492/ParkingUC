@@ -22,8 +22,8 @@ import {
   IonInput, 
   IonIcon 
 } from '@ionic/angular/standalone';
-import { ApiService } from '../../../Services/CameraService/api.service';
-import { RegisterService } from 'Services/RegisterService/register.service';
+import { ApiService } from '../../../services/CameraService/api.service';
+import { RegisterService } from 'services/RegisterService/register.service';
 
 @Component({
   selector: 'app-camera',
@@ -33,11 +33,11 @@ import { RegisterService } from 'Services/RegisterService/register.service';
   imports: [
     IonContent,
     IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonButtons,
+    // IonTitle,
+    // IonToolbar,
+    // IonButtons,
     IonButton,
-    IonBackButton,
+    // IonBackButton,
     IonItem,
     IonLabel,
     IonCard,
@@ -76,7 +76,7 @@ export class CameraPage implements OnInit, OnDestroy {
 
   // Call the service to create a register
   createRegister() {
-    if (this.register.vehicleType && this.register.personCode && this.register.vehiclePlate ) {
+    if (this.register.personCode && this.register.vehiclePlate ) {
       
       if (this.register.dateTimeEntrance){
         this.register.dateTimeEntrance = new Date(this.register.dateTimeEntrance).toISOString();
