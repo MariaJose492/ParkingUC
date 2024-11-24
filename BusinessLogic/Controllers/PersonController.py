@@ -1,15 +1,24 @@
 from fastapi import HTTPException
 from bson import ObjectId
+from pydantic import ValidationError
 from Config.DatabaseConnection import personCollection, registerCollection
 from Models.person import Person
 from bson import ObjectId
 from datetime import datetime, timedelta
 
+
+
 # Function to create a person
 async def createPersonController(personData: Person):
+    try: 
+        personData = Person(**personData.dict())
+    except ValidationError as e:
+        errors = [{"field": err["loc"][-1], "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
+        raise HTTPException(status_code=400, detail=errors)
+    
     existing_person = await personCollection.find_one({"code": personData.code})
     if existing_person:
-        raise HTTPException(status_code=400, detail="El código de persona ya existe")
+        raise HTTPException(status_code=400, detail="El código de persona ya existe")
     newPerson = personData.dict()
     result = await personCollection.insert_one(newPerson)
     return str(result.inserted_id)
