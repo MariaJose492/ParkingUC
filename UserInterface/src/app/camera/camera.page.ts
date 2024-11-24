@@ -33,11 +33,7 @@ import { RegisterService } from 'services/RegisterService/register.service';
   imports: [
     IonContent,
     IonHeader,
-    // IonTitle,
-    // IonToolbar,
-    // IonButtons,
     IonButton,
-    // IonBackButton,
     IonItem,
     IonLabel,
     IonCard,
@@ -77,6 +73,11 @@ export class CameraPage implements OnInit, OnDestroy {
   // Call the service to create a register
   createRegister() {
     if (this.register.personCode && this.register.vehiclePlate ) {
+      const regexValidation = /^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9- ]*$/;
+      if (!regexValidation.test(this.register.vehiclePlate)) {
+        alert('Placa del vehículo no válida');
+        return;
+      }
       
       if (this.register.dateTimeEntrance){
         this.register.dateTimeEntrance = new Date(this.register.dateTimeEntrance).toISOString();

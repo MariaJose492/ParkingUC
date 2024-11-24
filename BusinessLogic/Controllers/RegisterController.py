@@ -1,12 +1,17 @@
+from pydantic import ValidationError
 from Config.DatabaseConnection import registerCollection, personCollection
 from Models.register import Register
 from fastapi import HTTPException
 from datetime import datetime, timedelta
 
 # * Function to create a register
-
-
 async def createRegisterController(registerData: Register):
+    try: 
+        registerData = Register(**registerData.dict())
+    except ValidationError as e:
+        errors = [{"field": err["loc"][-1], "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
+        raise HTTPException(status_code=400, detail=errors)
+    
     vehicleType = await isCarOrMotorbike(registerData.vehiclePlate)
 
     newRegister = registerData.dict()
