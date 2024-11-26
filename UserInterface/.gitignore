@@ -9,6 +9,7 @@
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 
+/__pycache__
 *.log
 log.txt
 
