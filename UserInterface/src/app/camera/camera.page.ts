@@ -20,10 +20,13 @@ import {
   IonRow, 
   IonCol, 
   IonInput, 
-  IonIcon 
+  IonIcon,
+  IonSelect,
+  IonSelectOption 
 } from '@ionic/angular/standalone';
-import { ApiService } from '../../../services/CameraService/api.service';
-import { RegisterService } from 'services/RegisterService/register.service';
+import { ApiService } from '../../../Services/CameraService/api.service';
+
+import { RegisterService } from 'Services/RegisterService/register.service';
 
 @Component({
   selector: 'app-camera',
@@ -36,6 +39,7 @@ import { RegisterService } from 'services/RegisterService/register.service';
     IonButton,
     IonItem,
     IonLabel,
+    IonSelectOption,
     IonCard,
     IonCardHeader,
     IonCardTitle,
@@ -46,7 +50,8 @@ import { RegisterService } from 'services/RegisterService/register.service';
     IonInput,
     IonIcon,
     CommonModule,
-    FormsModule
+    FormsModule,
+    IonSelect 
   ]
 })
 export class CameraPage implements OnInit, OnDestroy {
