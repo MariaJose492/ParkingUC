@@ -1,7 +1,9 @@
 matplotlib
 numpy
 fastapi
+fastapi-cli 
 uvicorn
 httpx
-opencv
+opencv-python
 motor
+pytesseract
