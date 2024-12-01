@@ -1,2 +1,4 @@
-# .gitignore
+#.gitignore
 .env
+exec.py
+requirements.txt

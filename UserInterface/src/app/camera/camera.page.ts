@@ -24,9 +24,9 @@ import {
   IonSelect,
   IonSelectOption 
 } from '@ionic/angular/standalone';
-import { ApiService } from '../../../Services/CameraService/api.service';
 
 import { RegisterService } from 'Services/RegisterService/register.service';
+import { CameraService } from 'Services/CameraService/camera.service';
 
 @Component({
   selector: 'app-camera',
@@ -61,7 +61,9 @@ export class CameraPage implements OnInit, OnDestroy {
 
   name:String= '';
   lastName:String = '';
-  constructor(private apiService: ApiService, private registerService: RegisterService, private router: Router) {}
+  charge:String = '';
+  
+  constructor(private cameraService: CameraService, private registerService: RegisterService, private router: Router) {}
 
   async ngOnInit() {
     await this.activateCamera(); 
@@ -158,6 +160,7 @@ export class CameraPage implements OnInit, OnDestroy {
       console.error('Error activating camera:', error);
     }
   }
+  
   processBackendJson(json:any){
     if (typeof json === 'string') {
       json = JSON.parse(json); 
@@ -166,6 +169,7 @@ export class CameraPage implements OnInit, OnDestroy {
     this.name = json.name || '';
     this.lastName = json.lastName || '';
     this.register.personCode = json.code;
+    this.charge = json.charge || '';
   }
 
   captureAndSendImage() {
@@ -180,7 +184,7 @@ export class CameraPage implements OnInit, OnDestroy {
 
     const imageBase64 = canvas.toDataURL('image/jpeg');
 
-    this.apiService.processCardImage(imageBase64).subscribe(
+    this.cameraService.processCardImage(imageBase64).subscribe(
       (response) => {
         console.log('Backend response:', response);
         this.processBackendJson(response);
@@ -199,7 +203,7 @@ export class CameraPage implements OnInit, OnDestroy {
   }
 
   goHome() {
-    this.router.navigate(['/home']); // Redirige a la ruta '/home'
+    this.router.navigate(['/home']);
   }
 
 }
