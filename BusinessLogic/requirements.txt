@@ -1,0 +1,7 @@
+matplotlib
+numpy
+fastapi
+uvicorn
+httpx
+opencv
+motor
