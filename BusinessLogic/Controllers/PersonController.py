@@ -55,7 +55,7 @@ async def updatePersonController(personId: str, updateData: dict):
 # Function to list all persons
 async def listPersonController():
     persons = await personCollection.find().to_list(length=None)
-    return [Person(**person).dict() for person in persons]
+    return [{**Person(**person).dict(), "_id": str(person["_id"])} for person in persons]
 
 
 # Function to delete a person by id:

@@ -14,8 +14,11 @@ client = motor.motor_asyncio.AsyncIOMotorClient(mongo_uri)
 # Conectar a la base de datos
 db = client["parkingUC"]
 
-# Acceder a la colección
+# Acceder a la colección person
 personCollection = db["person"]
 
 # Acceder a la colección registro
 registerCollection = db["register"]
+
+# Acceder a la colección novedad
+noveltyCollection = db["novelty"]

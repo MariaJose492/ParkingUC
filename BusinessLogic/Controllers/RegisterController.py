@@ -23,7 +23,7 @@ async def createRegisterController(registerData: Register):
 # * Function to list all registers
 async def listRegisterController():
     registers = await registerCollection.find().to_list(length=None)
-    return [Register(**register).dict() for register in registers]
+    return [{**Register(**register).dict(), "_id": str(register["_id"])} for register in registers]
 
 
 # * Function to get a vehicle by plate
