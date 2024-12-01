@@ -1,0 +1,9 @@
+matplotlib
+numpy
+fastapi
+fastapi-cli 
+uvicorn
+httpx
+opencv-python
+motor
+pytesseract

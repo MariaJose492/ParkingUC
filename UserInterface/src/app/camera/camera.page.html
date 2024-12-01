@@ -13,12 +13,21 @@
       </ion-button>
     </div>
 
-
-    <div class="camera" style="margin-top: 20px; display:flex ;">
+    <div class="camera" (click)="captureAndSendImage()">
       <video #videoElement autoplay playsinline class="camera-view"></video>
-
       <canvas #canvasElement style="display: none;"></canvas>
+      
+      <!-- The most important square -->
+      <!--<div class="focus-box"></div> -->
 
+      <div class="outer-focus-box">
+        <div class="focus-box">
+          <div class="bottom-left"></div>
+          <div class="bottom-right"></div>
+          <div class="center-cross"></div>
+        </div>
+      </div>
+  
     </div>
 
     <div class="Button-camera">
@@ -43,7 +52,7 @@
               </ion-item>
               <ion-item>
                 <ion-label position="stacked">Charge</ion-label>
-                <ion-select placeholder="Selecciona una opción" interface="popover">
+                <ion-select [value]="charge" placeholder="Selecciona una opción" interface="popover">
                   <ion-select-option value="Estudiante">Estudiante</ion-select-option>
                   <ion-select-option value="Administrativo">Administrativo</ion-select-option>
                 </ion-select>

@@ -30,7 +30,6 @@ ion-icon {
   color: black; 
 }
 
-
 .camera {
   display: flex;
   justify-content: center;
@@ -73,7 +72,6 @@ ion-col {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
 }
 
 ion-item {
@@ -103,10 +101,14 @@ ion-col{
 
 video {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px; 
+  height: auto;
+  aspect-ratio: 16 / 9; 
   border-radius: 10px;
   background: black;
+  object-fit: cover; 
 }
+
 .column1{
   margin-right: 50px;
 }
@@ -139,4 +141,120 @@ video {
   }
 }
 
+/* The most important square */
+/* .focus-box {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  border: 2px solid red;
+  box-sizing: border-box;
+  z-index: 10;
+} */
 
+.camera {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.center-cross {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background-color: #b3b6b7 ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  pointer-events: none;
+}
+
+.center-cross::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #b3b6b7 ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer-focus-box {
+  position: absolute;
+  width: 400px; 
+  height: 260px; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -40%); 
+  box-sizing: border-box;
+  border: 2px solid #b3b6b7; 
+  pointer-events: none;
+  z-index: 10;
+}
+
+.focus-box {
+  position: absolute;
+  width: 300px; 
+  height: 200px; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.focus-box::before,
+.focus-box::after {
+  content: '';
+  position: absolute;
+  width: 30px; 
+  height: 30px; 
+  border: 2px solid #b3b6b7; 
+  box-sizing: border-box;
+}
+
+/* Esquina superior izquierda */
+.focus-box::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Esquina superior derecha */
+.focus-box::after {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* Esquinas inferiores */
+.focus-box .bottom-left,
+.focus-box .bottom-right {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px; 
+  border: 2px solid #b3b6b7; 
+  box-sizing: border-box;
+}
+
+/* Esquina inferior izquierda */
+.focus-box .bottom-left {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+/* Esquina inferior derecha */
+.focus-box .bottom-right {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}

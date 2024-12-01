@@ -3,3 +3,9 @@ Para instalar ionic
 
 Para correr el microservicio
 * ionic serve
+
+Se ha instalado:
+Ionic
+Capacitor
+Axios
+Ionicons
