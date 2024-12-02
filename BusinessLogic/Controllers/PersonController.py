@@ -3,10 +3,14 @@ from bson import ObjectId
 from pydantic import ValidationError
 from Config.DatabaseConnection import personCollection, registerCollection
 from Models.person import Person
-from bson import ObjectId
 from datetime import datetime, timedelta
+import bcrypt
 
-
+# Function to encript the password
+def hash_password(password: str) -> str:
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed_password.decode('utf-8')
 
 # Function to create a person
 async def createPersonController(personData: Person):
@@ -19,15 +23,17 @@ async def createPersonController(personData: Person):
     existing_person = await personCollection.find_one({"code": personData.code})
     if existing_person:
         raise HTTPException(status_code=400, detail="El código de persona ya existe")
-    newPerson = personData.dict()
+    
+    if personData.password:
+        personData.password = hash_password(personData.password)
+
+    newPerson = personData.dict(exclude={"confirmPassword"})
     result = await personCollection.insert_one(newPerson)
     return str(result.inserted_id)
 
 
-
-
 # Function to update a person by id
-async def updatePersonController(personId: str, updateData: dict):
+async def updatePersonController(personId: str, updateData: dict, charge: str):
     if not updateData:
         raise HTTPException(
             status_code=400, detail="No se proporcionaron datos para la actualización.")
@@ -35,8 +41,12 @@ async def updatePersonController(personId: str, updateData: dict):
     update_fields = {}
     if 'phone' in updateData:
         update_fields['phone'] = updateData['phone']
-    if 'email' in updateData:
+    if 'email' in updateData and charge != "Vigilante":
         update_fields['email'] = updateData['email']
+    if 'password' in updateData:
+        update_fields['password'] = hash_password(updateData['password'])
+    if charge == 'Vigilante' and 'name' in updateData:
+        update_fields['name'] = updateData['name']
     if not update_fields:
         raise HTTPException(
             status_code=400, detail="No se proporcionaron campos válidos para la actualización.")

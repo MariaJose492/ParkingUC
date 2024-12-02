@@ -37,7 +37,7 @@ async def getRegisterByPlateRoute(vehiclePlate: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# * Path to delete a register after 15 days
+# Path to delete a register after 15 days
 # Find de register by plate
 # Check if 15 days have passed since the departure date
 # Delete the register if the condition is met
