@@ -5,18 +5,23 @@
   <div class="main-container">
 
     <div class="header-content">
-      <ion-button fill="clear" (click)="goHome()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear" (click)="goHome()">
-        <ion-icon name="home-outline"></ion-icon>
-      </ion-button>
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
     </div>
 
     <div class="camera" (click)="captureAndSendImage()">
       <video #videoElement autoplay playsinline class="camera-view"></video>
       <canvas #canvasElement style="display: none;"></canvas>
-      
+
       <!-- The most important square -->
       <!--<div class="focus-box"></div> -->
 
@@ -27,11 +32,7 @@
           <div class="center-cross"></div>
         </div>
       </div>
-  
-    </div>
 
-    <div class="Button-camera">
-      <ion-button (click)="captureAndSendImage()">Capture</ion-button>
     </div>
 
     <ion-card class="info-section" style="margin-top: 20px;">
@@ -42,61 +43,51 @@
         <ion-grid>
           <ion-row>
             <ion-col class="column1">
-              <ion-item>
-                <ion-label position="stacked">Name</ion-label>
+              <ion-label class="label-input" position="stacked">Nombre</ion-label>
+              <ion-item class="input">
                 <ion-input [value]="name" type="text"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Lastname</ion-label>
+              <ion-label class="label-input" position="stacked">Apellido</ion-label>
+              <ion-item class="input">
                 <ion-input [value]="lastName" type="text"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Charge</ion-label>
+              <ion-label class="label-input" position="stacked">Cargo</ion-label>
+              <ion-item class="input">
                 <ion-select [value]="charge" placeholder="Selecciona una opción" interface="popover">
                   <ion-select-option value="Estudiante">Estudiante</ion-select-option>
                   <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+                  <ion-select-option value="Vigilante">Vigilante</ion-select-option>
                 </ion-select>
               </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Vehicle Plate</ion-label>
-                <ion-input [(ngModel)]="register.vehiclePlate" [ngModelOptions]="{standalone: true}"
-                  type="text"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Data time Entrance</ion-label>
-                <ion-input [(ngModel)]="register.dateTimeEntrance" [ngModelOptions]="{standalone: true}"
-                  presentation="date-time"></ion-input>
+              <ion-label class="label-input" position="stacked">Placa del vehículo</ion-label>
+              <ion-item class="input">
+                <ion-input [(ngModel)]="register.vehiclePlate" (input)="onPlateChange($event)"
+                  placeholder="">
+                </ion-input>
               </ion-item>
             </ion-col>
             <ion-col class="column2">
-              <ion-item>
-                <ion-label position="stacked">Code</ion-label>
+              <ion-label class="label-input" position="stacked">Número de documento</ion-label>
+              <ion-item class="input">
                 <ion-input [(ngModel)]="register.personCode" [ngModelOptions]="{standalone: true}"
-                  type="number"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Email</ion-label>
-                <ion-input type="email"></ion-input>
-                <ion-button fill="clear" slot="end">
-                  <ion-icon name="pencil-outline"></ion-icon>
-                </ion-button>
-              </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Phone</ion-label>
-                <ion-input type="tel" maxlength="10" minlength="10"></ion-input>
-                <ion-button fill="clear" slot="end">
-                  <ion-icon name="pencil-outline"></ion-icon>
-                </ion-button>
-              </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Vehicle Type</ion-label>
-                <ion-input [(ngModel)]="register.vehicleType" [ngModelOptions]="{standalone: true}"
                   type="text"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-label position="stacked">Data time Exit</ion-label>
-                <ion-input [(ngModel)]="register.dateTimeExit" [ngModelOptions]="{standalone: true}"
-                  presentation="date-time"></ion-input>
+              <ion-label class="label-input" position="stacked">Email</ion-label>
+              <ion-item class="input">
+                <ion-input type="email"></ion-input>
+                <ion-button fill="clear" slot="end">
+                </ion-button>
+              </ion-item>
+              <ion-label class="label-input" position="stacked">Teléfono</ion-label>
+              <ion-item class="input">
+                <ion-input type="tel" maxlength="10" minlength="10"></ion-input>
+                <ion-button fill="clear" slot="end">
+                </ion-button>
+              </ion-item>
+              <ion-label class="label-input" position="stacked">Tipo de vehículo</ion-label>
+              <ion-item class="input">
+                <ion-input [(ngModel)]="register.vehicleType">
+                </ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -104,8 +95,9 @@
       </ion-card-content>
     </ion-card>
 
+
     <div class="enter-button" style="margin-top: 20px;">
-      <ion-button (click)="createRegister()">Enter</ion-button>
+      <ion-button class="buttonEnter" (click)="createRegister()">Enter</ion-button>
     </div>
 
   </div>

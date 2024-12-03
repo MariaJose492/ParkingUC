@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { home, arrowUndo, pencilOutline, pencilSharp } from 'ionicons/icons';
 import { 
   IonContent, 
   IonHeader, 
@@ -9,7 +11,7 @@ import {
   IonToolbar, 
   IonButtons, 
   IonButton, 
-  IonBackButton, 
+  IonIcon,
   IonItem, 
   IonLabel, 
   IonCard, 
@@ -20,13 +22,13 @@ import {
   IonRow, 
   IonCol, 
   IonInput, 
-  IonIcon,
   IonSelect,
   IonSelectOption 
 } from '@ionic/angular/standalone';
 
-import { RegisterService } from 'Services/RegisterService/register.service';
-import { CameraService } from 'Services/CameraService/camera.service';
+
+import { RegisterService } from 'services/RegisterService/register.service';
+import { CameraService } from 'services/CameraService/camera.service';
 
 @Component({
   selector: 'app-camera',
@@ -37,6 +39,7 @@ import { CameraService } from 'Services/CameraService/camera.service';
     IonContent,
     IonHeader,
     IonButton,
+    IonIcon,
     IonItem,
     IonLabel,
     IonSelectOption,
@@ -48,7 +51,6 @@ import { CameraService } from 'Services/CameraService/camera.service';
     IonRow,
     IonCol,
     IonInput,
-    IonIcon,
     CommonModule,
     FormsModule,
     IonSelect 
@@ -63,7 +65,14 @@ export class CameraPage implements OnInit, OnDestroy {
   lastName:String = '';
   charge:String = '';
   
-  constructor(private cameraService: CameraService, private registerService: RegisterService, private router: Router) {}
+  constructor(private cameraService: CameraService, private registerService: RegisterService, private router: Router) {
+    addIcons({
+      'home': home,
+      'arrow-undo': arrowUndo,
+      'pencil-outline': pencilOutline,
+      'pencil-sharp': pencilSharp
+    });
+  }
 
   async ngOnInit() {
     await this.activateCamera(); 
@@ -107,6 +116,8 @@ export class CameraPage implements OnInit, OnDestroy {
       alert('Por favor, llena todos los campos requeridos');
     }
   }
+
+  
   // Call the service to update a register
   updateRegister(registerId: string): void {
     const updateData = {
@@ -145,6 +156,27 @@ export class CameraPage implements OnInit, OnDestroy {
         console.error('Error al listar lso registros:', error);
       }
     );
+  }
+
+  determineVehicleType(plate: string): string {
+    if (!plate) return '';
+    
+    const parts = plate.split('-');
+    if (parts.length === 0) return '';
+    
+    const lastChar = parts[parts.length - 1].charAt(parts[parts.length - 1].length - 1);
+    
+    if (/^\d$/.test(lastChar)) {
+      return 'Carro';
+    } else if (/^[a-zA-Z]$/.test(lastChar)) {
+      return 'Moto';
+    }
+    return 'Invalido';
+  }
+
+  onPlateChange(event: any) {
+    const plate = event.target.value;
+    this.register.vehicleType = this.determineVehicleType(plate);
   }
 
   async activateCamera() {
