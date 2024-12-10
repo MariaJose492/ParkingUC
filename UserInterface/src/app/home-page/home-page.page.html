@@ -1,7 +1,10 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" style="display: flex; justify-content: space-between;">
   <ion-toolbar>
     <ion-title>HomePage</ion-title>
   </ion-toolbar>
+  <ion-button (click)="onLogout()">
+    Cerrar Sesión
+  </ion-button>
 </ion-header>
 
 <ion-content [fullscreen]="true">

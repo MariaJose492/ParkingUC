@@ -26,10 +26,8 @@ import {
   IonSelect,
   IonSelectOption
 } from '@ionic/angular/standalone';
-
-
-import { RegisterService } from 'services/RegisterService/register.service';
-import { CameraService } from 'services/CameraService/camera.service';
+import { RegisterService } from 'Services/RegisterService/register.service';
+import { CameraService } from 'Services/CameraService/camera.service';
 
 @Component({
   selector: 'app-camera',

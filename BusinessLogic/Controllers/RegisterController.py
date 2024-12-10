@@ -21,8 +21,7 @@ async def createRegisterController(registerData: Register):
     if not existing_person:
         raise HTTPException(
             status_code=400,
-            detail=f"No existe una persona con el código {
-                registerData.personCode}"
+            detail=f"No existe una persona con el código {registerData.personCode}"
         )
     vehicleType = await isCarOrMotorbike(registerData.vehiclePlate)
 

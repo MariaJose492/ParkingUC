@@ -15,4 +15,8 @@ export class LoginService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<any>(this.apiUrl, { email, password }, { headers });
   }
+
+  logout(): void {
+    localStorage.removeItem('user');
+  }
 }
