@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  // private baseUrl = 'http://127.0.0.1:8000';
-  private baseUrl = 'http://192.168.1.72:8000'
+  private baseUrl = 'http://127.0.0.1:8000';
+  // private baseUrl = 'http://192.168.1.72:8000'
 
   constructor(private http:HttpClient) {}
 
@@ -16,14 +16,14 @@ export class RegisterService {
     return this.http.post(`${this.baseUrl}/createRegister/`, register);
   }
 
-  updateRegister(registerId: string, updateData:any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/updateRegister/${registerId}`, updateData );
+  updateRegister(vehiclePlate: string, updateData:any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/updateRegister/${vehiclePlate}`, updateData );
   }
 
   listRegister(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/listRegister/`);
+    return this.http.get(`${this.baseUrl}/listRegisters/`);
   }
-  deleteRegister(registerId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/deleteRegister/${registerId}`);
+  deleteRegister(vehiclePlate: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteRegister/${vehiclePlate}`);
   }
 }

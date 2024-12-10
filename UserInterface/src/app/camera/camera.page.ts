@@ -5,26 +5,26 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
 
-import { 
-  IonContent, 
-  IonHeader, 
-  IonTitle, 
-  IonToolbar, 
-  IonButtons, 
-  IonButton, 
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonButtons,
+  IonButton,
   IonIcon,
-  IonItem, 
-  IonLabel, 
-  IonCard, 
-  IonCardHeader, 
-  IonCardTitle, 
-  IonCardContent, 
-  IonGrid, 
-  IonRow, 
-  IonCol, 
-  IonInput, 
+  IonItem,
+  IonLabel,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonInput,
   IonSelect,
-  IonSelectOption 
+  IonSelectOption
 } from '@ionic/angular/standalone';
 
 
@@ -54,18 +54,18 @@ import { CameraService } from 'Services/CameraService/camera.service';
     IonInput,
     CommonModule,
     FormsModule,
-    IonSelect 
+    IonSelect
   ]
 })
 export class CameraPage implements OnInit, OnDestroy {
   @ViewChild('videoElement', { static: false }) videoElement!: ElementRef;
-  @ViewChild('canvasElement', { static: false }) canvasElement!: ElementRef; 
-  stream: MediaStream | null = null; 
+  @ViewChild('canvasElement', { static: false }) canvasElement!: ElementRef;
+  stream: MediaStream | null = null;
 
-  name:String= '';
-  lastName:String = '';
-  charge:String = '';
-  
+  name: String = '';
+  lastName: String = '';
+  charge: String = '';
+
   constructor(private cameraService: CameraService, private registerService: RegisterService, private router: Router) {
     addIcons({
       'home': home,
@@ -74,10 +74,10 @@ export class CameraPage implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    await this.activateCamera(); 
+    await this.activateCamera();
   }
 
-  register ={
+  register = {
     vehicleType: '',
     personCode: null,
     vehiclePlate: '',
@@ -87,14 +87,14 @@ export class CameraPage implements OnInit, OnDestroy {
 
   // Call the service to create a register
   createRegister() {
-    if (this.register.personCode && this.register.vehiclePlate ) {
+    if (this.register.personCode && this.register.vehiclePlate) {
       const regexValidation = /^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9- ]*$/;
       if (!regexValidation.test(this.register.vehiclePlate)) {
         alert('Placa del vehículo no válida');
         return;
       }
-      
-      if (this.register.dateTimeEntrance){
+
+      if (this.register.dateTimeEntrance) {
         this.register.dateTimeEntrance = new Date(this.register.dateTimeEntrance).toISOString();
       } else {
         this.register.dateTimeEntrance = new Date().toISOString();
@@ -116,7 +116,7 @@ export class CameraPage implements OnInit, OnDestroy {
     }
   }
 
-  
+
   // Call the service to update a register
   updateRegister(registerId: string): void {
     const updateData = {
@@ -145,26 +145,14 @@ export class CameraPage implements OnInit, OnDestroy {
     );
   }
 
-  // Call the service to list all registers
-  listRegister(): void {
-    this.registerService.listRegister().subscribe(
-      (response) => {
-        this.register = response;
-      },
-      (error) => {
-        console.error('Error al listar lso registros:', error);
-      }
-    );
-  }
-
   determineVehicleType(plate: string): string {
     if (!plate) return '';
-    
+
     const parts = plate.split('-');
     if (parts.length === 0) return '';
-    
+
     const lastChar = parts[parts.length - 1].charAt(parts[parts.length - 1].length - 1);
-    
+
     if (/^\d$/.test(lastChar)) {
       return 'Carro';
     } else if (/^[a-zA-Z]$/.test(lastChar)) {
@@ -191,10 +179,10 @@ export class CameraPage implements OnInit, OnDestroy {
       console.error('Error activating camera:', error);
     }
   }
-  
-  processBackendJson(json:any){
+
+  processBackendJson(json: any) {
     if (typeof json === 'string') {
-      json = JSON.parse(json); 
+      json = JSON.parse(json);
     }
 
     this.name = json.name || '';
@@ -220,7 +208,7 @@ export class CameraPage implements OnInit, OnDestroy {
         console.log('Backend response:', response);
         this.processBackendJson(response);
       },
-      
+
       (error) => {
         console.error('Error sending image to backend:', error);
       }
@@ -238,5 +226,5 @@ export class CameraPage implements OnInit, OnDestroy {
   }
 
 }
-  
+
 
