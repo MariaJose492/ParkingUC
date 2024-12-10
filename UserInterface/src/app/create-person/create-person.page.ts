@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonContent, IonHeader, IonItem, IonLabel, IonInput, IonIcon, IonButton, IonBackButton, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
-import { PersonService } from 'services/personService/person.service';
+import { PersonService } from 'Services/PersonService/person.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
