@@ -17,6 +17,7 @@ import {
   IonInput,
 } from '@ionic/angular/standalone';
 import { LoginService } from 'Services/LoginService/login.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,6 @@ import { LoginService } from 'Services/LoginService/login.service';
     IonLabel,
     IonInput,
     IonCardTitle, 
-    IonTitle,
     FormsModule,
   ]
 })
@@ -51,32 +51,37 @@ export class LoginPage {
     });
   }
 
-  onLogin() {
-    console.log("Enviando datos de login:", { email: this.email, password: this.password });
-    if (this.email === 'admin' && this.password === 'admin') {
-      this.showAlert('Login Successful', 'Welcome!');
-    } else {
-      this.showAlert('Login Failed', 'Invalid email or password.');
-    }
+  async onLogin() {
 
-    this.loginService.login(this.email, this.password).subscribe(
-      (response) => {
-        console.log('Respuesta del backend:', response);
-        if (response.token) {
-          localStorage.setItem('token', response.token); 
-          alert('Inicio de sesión exitoso');
-          this.router.navigate(['/home']); 
-        } else {
-          alert('Usuario o contraseña incorrectos');
-        }
-      },
-      (error) => {
-        console.error('Error durante el inicio de sesión:', error);
-        alert('Credenciales incorrectas o error en el servidor');
+    try {
+      const response = await this.loginService.login(this.email, this.password).toPromise();
+
+      if (response.token) {
+
+        await this.showAlert('Éxito', '¡Inicio de sesión exitoso!');
+        localStorage.setItem('token', response.token); 
+        this.router.navigate(['/home']); 
+      } else {
+
+        await this.showAlert('Error', 'Usuario o contraseña incorrectos');
       }
-    );
+    } catch (error) {
+      
+      const err = error as HttpErrorResponse;
+      console.error('Error durante el inicio de sesión:', err);
+
+      
+      if (err.status === 404) {
+        await this.showAlert('Error', 'Usuario no encontrado');
+      } else if (err.status === 401) {
+        await this.showAlert('Error', 'Contraseña incorrecta');
+      } else {
+        await this.showAlert('Error', 'Error desconocido, por favor intenta nuevamente');
+      }
+    }
   }
 
+  // Método para mostrar alertas
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,

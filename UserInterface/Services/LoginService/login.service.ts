@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,13 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api'; 
+  private apiUrl = 'http://127.0.0.1:8000/api/login';
 
   constructor(private http: HttpClient) {}
 
-  // Método para login
   login(email: string, password: string): Observable<any> {
-    const payload = { email, password };
-    return this.http.post<any>(`${this.apiUrl}/login`, payload);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<any>(this.apiUrl, { email, password }, { headers });
   }
 }
