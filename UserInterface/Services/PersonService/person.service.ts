@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class PersonService {
 
-  // private baseUrl = 'http://127.0.0.1:8000';
-  private baseUrl = 'http://192.168.1.72:8000'
+  private baseUrl = 'http://127.0.0.1:8000';
+  // private baseUrl = 'http://192.168.1.72:8000'
 
   constructor(private http:HttpClient) {}
 
@@ -25,6 +25,11 @@ export class PersonService {
   }
   deletePerson(personId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deletePerson/${personId}`);
+  }
+
+  getPersonByCode(personCode: number): Observable<any> {
+    // Asegurarse que la URL esté bien formada
+    return this.http.get(`${this.baseUrl}/getPerson/${personCode}`);
   }
 }
 
