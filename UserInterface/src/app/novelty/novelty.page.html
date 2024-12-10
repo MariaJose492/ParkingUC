@@ -1,0 +1,46 @@
+<ion-header [translucent]="true" class="transparent-header">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+
+    <div class="logo-section">
+      <img class="logo" [src]="'assets/LogoParkingUc.png'" alt="LOGO">
+      <h2>Creación de novedades</h2>
+      <p>Informa a los usuarios cuando haya algún evento extraordinario</p>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-label class="label-input" position="stacked">Placa vehículo</ion-label>
+        <ion-item class="input">
+          <ion-input type="text" [(ngModel)]="novelty.vehiclePlate[0]"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-label class="label-input" position="stacked">Descripción</ion-label>
+        <ion-item>
+          <ion-textarea rows="5" autoGrow="true" [(ngModel)]="novelty.description"></ion-textarea>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+
+    <div class="enter-button">
+      <ion-button (click)="createNovelty()">Guardar</ion-button>
+    </div>
+  </div>
+</ion-content>
