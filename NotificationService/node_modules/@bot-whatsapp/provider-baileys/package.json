@@ -1,0 +1,58 @@
+{
+    "name": "@bot-whatsapp/provider-baileys",
+    "version": "0.1.3-alpha.9",
+    "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+    "keywords": [],
+    "author": "Leifer Mendez <leifer33@gmail.com>",
+    "license": "ISC",
+    "main": "dist/index.cjs",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "build": "rimraf dist && rollup --config",
+        "test": "npx uvu -r tsm ./__tests__",
+        "test:coverage": "npx c8 npm run test"
+    },
+    "files": [
+        "./dist/"
+    ],
+    "directories": {
+        "src": "src",
+        "test": "__tests__"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codigoencasa/bot-whatsapp.git"
+    },
+    "bugs": {
+        "url": "https://github.com/codigoencasa/bot-whatsapp/issues"
+    },
+    "homepage": "https://github.com/codigoencasa/bot-whatsapp#readme",
+    "devDependencies": {
+        "@bot-whatsapp/bot": "0.1.3-alpha.9",
+        "@hapi/boom": "^10.0.1",
+        "@rollup/plugin-commonjs": "^23.0.7",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@types/mime-types": "^2.1.4",
+        "@types/node": "^20.11.0",
+        "@types/qr-image": "^3.2.9",
+        "@types/sinon": "^17.0.3",
+        "body-parser": "^1.20.2",
+        "mime-types": "^2.1.35",
+        "pino": "^7.11.0",
+        "polka": "^0.5.2",
+        "qr-image": "^3.2.0",
+        "rimraf": "^5.0.5",
+        "rollup-plugin-typescript2": "^0.36.0",
+        "sinon": "^17.0.1",
+        "wa-sticker-formatter": "^4.4.4"
+    },
+    "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
+        "@types/polka": "^0.5.7",
+        "@whiskeysockets/baileys": "^6.6.0",
+        "fluent-ffmpeg": "^2.1.2"
+    },
+    "gitHead": "de43467d94c2b1d66ee829fa7d7c96eb36720f3f"
+}

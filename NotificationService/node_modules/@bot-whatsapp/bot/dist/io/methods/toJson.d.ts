@@ -1,0 +1,4 @@
+import { TContext } from '../../types';
+declare const toJson: (inCtx: TContext) => (() => TContext[]);
+export { toJson };
+//# sourceMappingURL=toJson.d.ts.map
