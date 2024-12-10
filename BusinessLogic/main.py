@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes, PlateProcessingRoutes
 from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes, AuthRoutes, LoginRoutes
 from fastapi.middleware.cors import CORSMiddleware
 import pytesseract
@@ -17,7 +18,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,             # Orígenes permitidos
+    # allow_origins=origins,             # Orígenes permitidos
+    allow_origins=["*"],
     allow_credentials=True,            # Permitir credenciales (si es necesario)
     allow_methods=["*"],               # Métodos HTTP permitidos
     allow_headers=["*"],               # Encabezados permitidos
@@ -28,6 +30,7 @@ app.include_router(PersonRoutes.router)
 app.include_router(RegisterRoutes.router)
 app.include_router(NoveltyRoutes.router)
 app.include_router(ProcessingRoutes.router, prefix="/api/v1", tags=["Processing"])
+# app.include_router(PlateProcessingRoutes.router, prefix="/api/v1", tags=["Processing"])  
 # app.include_router(AuthRoutes.router, prefix="/api", tags=["Auth"])
 app.include_router(LoginRoutes.router)
 
