@@ -27,4 +27,6 @@ Actualizar requerimientos (npm i)
 NOTIFICACIONES
 * npm install axios
 *pip install requests
+* npm install express @bot-whatsapp/bot @bot-whatsapp/provider-baileys ts-node typescript
+
 
