@@ -35,7 +35,12 @@ export const routes: Routes = [
     loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then( m => m.VehicleExitPage)
   },
 
-
-
+    path: 'in-out',
+    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
+  },
+  {
+    path: 'list-register',
+    loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
+  },
 
 ];

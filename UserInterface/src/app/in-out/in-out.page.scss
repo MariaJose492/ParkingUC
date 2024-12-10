@@ -1,0 +1,109 @@
+.main-container {
+    background-color: white;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.transparent-header {
+    background: transparent !important;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+}
+
+.logo-section {
+    margin-top: 40px;
+}
+
+.icon {
+    color: black;
+    font-size: 20px;
+}
+
+.TitleHeader {
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: #083C6C;
+    margin-right: 40px;
+}
+
+.buttons {
+    display: flex;
+}
+
+ion-button.circle-button {
+    width: 170px !important;
+    height: 170px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 20px auto !important;
+}
+
+.green-button {
+    --background: green !important;
+    --color: white !important;
+    --border-radius: 50% !important;
+}
+
+.red-button {
+    --background: red !important;
+    --color: white !important;
+    --border-radius: 50% !important;
+}
+
+.button-text {
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+.enter-button {
+    margin: 0px 80px 0px 80px;
+}
+
+@media (max-width: 600px) {
+    .TitleHeader {
+        font-size: 20px; /* Asegura que el título sea más pequeño en móviles */
+    }
+
+    .buttons {
+        margin-top: 40px; /* Añadir espacio entre el título y los botones */
+    }
+
+    ion-button.circle-button {
+        width: 120px !important; /* Tamaño más pequeño para botones en móviles */
+        height: 120px !important;
+    }
+
+    .button-text {
+        font-size: 12px; /* Reducir el tamaño de la fuente en móviles */
+    }
+
+    .enter-button {
+        margin: 0px 10px 0px 10px; /* Ajustar márgenes para pantallas pequeñas */
+    }
+}

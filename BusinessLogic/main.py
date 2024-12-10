@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes, PlateProcessingRoutes
+from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes, AuthRoutes, LoginRoutes
 from fastapi.middleware.cors import CORSMiddleware
 import pytesseract
 
@@ -30,6 +31,8 @@ app.include_router(RegisterRoutes.router)
 app.include_router(NoveltyRoutes.router)
 app.include_router(ProcessingRoutes.router, prefix="/api/v1", tags=["Processing"])
 # app.include_router(PlateProcessingRoutes.router, prefix="/api/v1", tags=["Processing"])  
+# app.include_router(AuthRoutes.router, prefix="/api", tags=["Auth"])
+app.include_router(LoginRoutes.router)
 
 @app.get("/")
 async def root():

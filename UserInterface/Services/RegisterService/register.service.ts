@@ -19,13 +19,14 @@ export class RegisterService {
   updateRegister(vehiclePlate: string, updateData:any): Observable<any> {
     const cleanPlate = vehiclePlate.trim();
     return this.http.put(`${this.baseUrl}/updateRegister/${cleanPlate}`, updateData );
+    return this.http.put(`${this.baseUrl}/updateRegister/${vehiclePlate}`, updateData );
   }
 
   listRegister(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/listRegister/`);
+    return this.http.get(`${this.baseUrl}/listRegisters/`);
   }
-  deleteRegister(registerId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/deleteRegister/${registerId}`);
+  deleteRegister(vehiclePlate: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteRegister/${vehiclePlate}`);
   }
 
   getRegistersWithoutExit(): Observable<any> {
