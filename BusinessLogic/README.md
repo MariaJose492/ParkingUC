@@ -16,7 +16,7 @@ Para el manejo del CORS para manejar solicitudes de origen cruzado
 
 El siguiente es un el comando para ejecutar el microservicio:
 * uvicorn main:app --reload
-* py exec.py
+*py exec.py 
 
 URL BACKEND
 * http://127.0.0.1:8000/ 

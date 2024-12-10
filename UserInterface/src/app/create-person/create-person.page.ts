@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
 import { HostListener } from '@angular/core';
+import { IonContent, IonHeader, IonItem, IonLabel, IonInput, IonIcon, IonButton, IonBackButton, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { PersonService } from 'Services/PersonService/person.service';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-create-person',
