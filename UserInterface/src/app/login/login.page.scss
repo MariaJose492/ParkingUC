@@ -1,0 +1,280 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82vh;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  height: 70vh;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 15px solid #083c6c;
+  margin: 0%;
+}
+
+.image-big img{
+  width: 490px;
+  height: 90hv;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #ccc;
+  height: 200px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.icon {
+  color: black;
+  font-size: 30px;
+  margin-left: 5px;
+}
+
+.campo {
+  margin-left: 15px;
+}
+
+.form-icons{
+  display: flex;
+  align-items: center;
+  margin-left: 0px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  --padding: 0px;
+}
+
+.main-container {
+  background-color: white;
+  margin: 20px;
+}
+
+.transparent-header {
+  background: transparent !important;
+  height: 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 12;
+}
+
+.buttonEnter {
+  color: white;
+  --background: #083C6C;
+}
+
+.icon {
+  color: black;
+  font-size: 20px;
+  // margin-left: 5px;
+}
+
+.TitleHeader {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  color: #083C6C;
+  margin-right: 40px;
+  letter-spacing: -0.5px;
+}
+
+.Title {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24.2px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+
+.info-section {
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 0;
+}
+
+.label-input[_ngcontent-ng-c635312638] {
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 12.1px;
+  text-align: left;
+  text-underline-position: under;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  padding: 0;
+}
+
+.input {
+  width: 400px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0;
+}
+
+
+ion-grid {
+  width: 100%;
+}
+
+ion-col {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+ion-item {
+  --inner-padding-end: 0;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.enter-button {
+  display: flex;
+  justify-content: center;
+  // margin: 30px;
+  padding-bottom: 40px;
+}
+
+.enter-button ion-button .ion-button{
+  width: 15%;
+  border-radius: 100px;
+  /* background-color: #e0e0e0; */
+  --border-radius: 50px; 
+  --background: #083c6c;
+  font-size: 16px;
+}
+
+ion-col {
+  width: 50%;
+  margin: 15px;
+}
+
+
+@media (max-width: 768px) {
+  ion-row {
+    display: block;
+    flex-direction: column;
+  }
+
+  .column1,
+  .column2 {
+    margin: 0;
+  }
+
+
+  /* Columnas: Ocupan todo el ancho */
+  ion-col {
+    width: 100%;
+    margin: 0;
+    padding: 8px;
+    align-items: center;
+  }
+
+  /* Centrar los inputs y ajustarlos al 100% */
+  ion-item {
+    width: 100%;
+    --inner-padding-end: 0;
+    margin-bottom: 15px;
+    border-radius: 5px
+  }
+
+  .label-input[_ngcontent-ng-c635312638] {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 12.1px;
+    text-align: left;
+    text-underline-position: under;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
+    padding: 0;
+    margin-left: 140px;
+}
+
+  /* Ajustar tamaño de los iconos */
+  .icon {
+    font-size: 16px;
+  }
+
+  .info-section {
+    margin: 0;
+  }
+
+  /* Títulos más pequeños en móviles */
+  .Title {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24.2px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+
+  .TitleHeader {
+    font-size: 20px;
+    margin-right: 0;
+  }
+
+  .label-input {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 12.1px;
+    text-align: left;
+    text-underline-position: under;
+    text-decoration-skip-ink: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .image-big {
+    display: none;  
+  }
+
+  .logo-container {
+    transform: translateY(-20px); 
+    margin-bottom: 8px;
+  }
+}

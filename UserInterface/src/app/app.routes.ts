@@ -39,6 +39,10 @@ export const routes: Routes = [
     loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
   },
   {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+  },
+
     path: 'list-register',
     loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
   },

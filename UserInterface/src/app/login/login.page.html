@@ -1,0 +1,69 @@
+<ion-header [translucent]="true" class="transparent-header"> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+    <div class="login-container">
+      <div class="login-box">
+        <div class="logo-container">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+          <ion-item class="form-icons">
+            <div class="form-icons">
+              <ion-icon name="person"></ion-icon>
+              <div class="campo">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input
+                  type="text"
+                  name="email"
+                  [(ngModel)]="email"
+                  required
+                ></ion-input>
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item class="form-icons">
+            <div class="form-icons">
+              <ion-icon class="icon" name="lock-closed"></ion-icon>
+              <div class="campo">
+                <ion-label position="floating">Password</ion-label>
+                <ion-input
+                  type="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  required
+                ></ion-input>
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-button class="ion-button" expand="full" type="submit"
+            >Login</ion-button
+          >
+        </form>
+      </div>
+
+      <div class="image-big">
+        <img src="../../assets/img/imagenLogin.jpg" />
+      </div>
+    </div>
+  </div>
+</ion-content>
