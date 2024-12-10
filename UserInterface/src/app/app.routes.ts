@@ -29,6 +29,10 @@ export const routes: Routes = [
     path: 'novelty',
     loadComponent: () => import('./novelty/novelty.page').then( m => m.NoveltyPage)
   },
+  {
+    path: 'in-out',
+    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
+  },
 
 
 
