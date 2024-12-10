@@ -1,6 +1,5 @@
 .main-container {
   background-color: white;
-  margin: 20px;
 }
 
 .transparent-header {
@@ -49,7 +48,7 @@
   justify-content: center;
   align-items: center;
   margin: 40px 0;
-  padding-top: 60px;
+  padding-top: 10px;
 }
 
 .camera-placeholder {
@@ -127,7 +126,7 @@ ion-item {
 
 .enter-button ion-button {
   width: 15%;
-  border-radius: 100px;
+  border-radius: 120px;
   background-color: #e0e0e0;
 }
 
@@ -202,7 +201,7 @@ video {
   height: 260px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -46%);
   box-sizing: border-box;
   border: 2px solid #b3b6b7;
   pointer-events: none;
@@ -272,6 +271,16 @@ video {
   border-left: none;
   border-top: none;
 }
+
+/* The most important square */
+// .focus-box {
+//   position: absolute;
+//   width: 300px;
+//   height: 200px;
+//   border: 2px solid #b3b6b7;;
+//   box-sizing: border-box;
+//   z-index: 10;
+// }   
 
 @media (max-width: 768px) {
   ion-row {
@@ -352,8 +361,6 @@ video {
     margin: 0;
   }
 
-
-
   /* The most important square */
   // .focus-box {
   //   position: absolute;
@@ -401,7 +408,7 @@ video {
     height: 260px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -46%);
     box-sizing: border-box;
     border: 2px solid #b3b6b7;
     pointer-events: none;
@@ -471,4 +478,225 @@ video {
     border-left: none;
     border-top: none;
   }
+}
+
+@media (max-width: 400px) {
+  ion-row {
+    display: block; 
+    flex-direction: column;
+  }
+
+  .column1,
+  .column2 {
+    margin: 0px;
+  }
+
+  ion-col {
+    width: 60%;
+    // margin-right: 80px;
+    padding: 8px;
+    align-items: center;
+  }
+
+  /* Centrar los inputs y ajustarlos al 100% */
+  ion-item {
+    width: 100%;
+    --inner-padding-end: 0;
+    margin-bottom: 15px;
+    border-radius: 5px
+  }
+
+  .label-input[_ngcontent-ng-c2724858381] {
+    font-family: sans-serif;
+    font-size: 25px;
+    white-space: nowrap; // Evita el salto de línea
+    width: 100%;
+    font-weight: 200;
+    line-height: 14.1px;
+    text-align: left;
+    text-underline-position: under;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Ajustar tamaño de los iconos */
+  .icon {
+    font-size: 16px;
+  }
+
+  .info-section {
+    margin: 0;
+  }
+
+  .input {
+    width: 340px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0;
+    margin-left: 130px;
+  }
+
+  /* Títulos más pequeños en móviles */
+  .Title {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24.2px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+
+  .TitleHeader {
+    font-size: 20px;
+    margin-right: 0;
+  }
+
+  .label-input {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 12.1px;
+    text-align: left;
+    text-underline-position: under;
+    text-decoration-skip-ink: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* The most important square */
+  // .focus-box {
+  //   position: absolute;
+  //   width: 300px;
+  //   height: 200px;
+  //   border: 2px solid red;
+  //   box-sizing: border-box;
+  //   z-index: 10;
+  // } 
+
+  .camera {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .camera-view {
+    width: 90%;
+    max-width: 500px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+
+  .center-cross {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #b3b6b7;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+    pointer-events: none;
+  }
+
+  .center-cross::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #b3b6b7;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .outer-focus-box {
+    position: absolute;
+    width: 80%;
+    height: 260px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -47%);
+    box-sizing: border-box;
+    border: 2px solid #b3b6b7;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .focus-box {
+    position: absolute;
+    width: 85%;
+    height: 220px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .focus-box::before,
+  .focus-box::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #b3b6b7;
+    box-sizing: border-box;
+  }
+
+  /* Esquina superior izquierda */
+  .focus-box::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  /* Esquina superior derecha */
+  .focus-box::after {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  /* Esquinas inferiores */
+  .focus-box .bottom-left,
+  .focus-box .bottom-right {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #b3b6b7;
+    box-sizing: border-box;
+  }
+
+  /* Esquina inferior izquierda */
+  .focus-box .bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+  }
+
+  /* Esquina inferior derecha */
+  .focus-box .bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+  }
+
+  .enter-button[_ngcontent-ng-c2724858381] ion-button[_ngcontent-ng-c2724858381] {
+    width: 35%;
+    border-radius: 120px;
+    background-color: #e0e0e0;
+}
+
 }

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CameraService {
-    private apiUrl = 'http://127.0.0.1:8000/api/v1/process/card';
+    // private apiUrl = 'http://127.0.0.1:8000/api/v1/process/card';
+    private apiUrl = 'http://192.168.1.72:8000/api/v1/process/card';
   
     constructor(private http: HttpClient) {}
   
