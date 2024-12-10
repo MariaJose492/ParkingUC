@@ -44,3 +44,15 @@ async def deletePersonRoute(personId: str):
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Path to get person by code
+@router.get("/getPerson/{personCode}")
+async def getPersonByCodeRoute(personCode: int):
+    try:
+        person = await getPersonByCode(personCode)
+        if not person:
+            raise HTTPException(
+                status_code=404, detail="Persona no encontrada")
+        return person
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

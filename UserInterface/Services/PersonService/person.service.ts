@@ -26,5 +26,10 @@ export class PersonService {
   deletePerson(personId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deletePerson/${personId}`);
   }
+
+  getPersonByCode(personCode: number): Observable<any> {
+    // Asegurarse que la URL esté bien formada
+    return this.http.get(`${this.baseUrl}/getPerson/${personCode}`);
+  }
 }
 

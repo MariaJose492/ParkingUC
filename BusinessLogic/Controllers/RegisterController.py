@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pydantic import ValidationError
 from Config.DatabaseConnection import registerCollection, personCollection
 from Models.register import Register
@@ -5,13 +6,24 @@ from fastapi import HTTPException
 from datetime import datetime, timedelta
 
 # * Function to create a register
+
+
 async def createRegisterController(registerData: Register):
-    try: 
+    try:
         registerData = Register(**registerData.dict())
     except ValidationError as e:
-        errors = [{"field": err["loc"][-1], "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
+        errors = [{"field": err["loc"][-1],
+                   "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
         raise HTTPException(status_code=400, detail=errors)
-    
+
+    # Verificar si la persona existe
+    existing_person = await personCollection.find_one({"code": registerData.personCode})
+    if not existing_person:
+        raise HTTPException(
+            status_code=400,
+            detail=f"No existe una persona con el código {
+                registerData.personCode}"
+        )
     vehicleType = await isCarOrMotorbike(registerData.vehiclePlate)
 
     newRegister = registerData.dict()
@@ -36,12 +48,30 @@ async def getRegisterByPlate(vehiclePlate: str):
 
 # * Function to get register that have the dateTimeExit null, by vehiclePlate.
 async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
-    register = await registerCollection.find_one({"vehiclePlate": vehiclePlate, "dateTimeExit": None})
-    return register
+    register = await registerCollection.find_one({
+        "vehiclePlate": vehiclePlate,
+        "dateTimeExit": None
+    })
+
+    if register:
+        # Convertir ObjectId a string
+        register["_id"] = str(register["_id"])
+        return register
+
+    return None
+
+# *Function to get all register that have dateTimeExit null
+
+
+async def getRegistersWithoutExit():
+    # Consulta para obtener solo las placas (vehiclePlate) donde dateTimeExit es None
+    registers = await registerCollection.find({"dateTimeExit": None}, {"vehiclePlate": 1, "_id": 0}).to_list(length=None)
+
+    # Retorna solo las placas
+    return [register["vehiclePlate"] for register in registers]
+
 
 # * Function to get a person by codePerson
-
-
 async def getPersonByPersonCode(personCode: int):
     person = await personCollection.find_one({"code": personCode})
     if not person:
@@ -88,25 +118,41 @@ async def deleteRegisterByPlate(vehiclePlate: int):
 # enter, if there is no vehicle at the moment with that license plate or it has already left, it informs you
 # If a record without departure time is found for that vehicle, the dateTimeExit field is updated'''
 async def updateRegisterController(vehiclePlate: str, updateData: dict):
-    register = await getRegisterByPlateAndDateTimeExit(vehiclePlate)
-    if not register:
+    try:        
+        register = await getRegisterByPlateAndDateTimeExit(vehiclePlate)
+        if not register:
+            raise HTTPException(
+                status_code=400, 
+                detail="El vehículo ya registró su salida o no existe"
+            )
+        
+        update_fields = {'dateTimeExit': datetime.now()}
+
+        register_id = register.get("_id")
+        if isinstance(register_id, str):
+            register_id = ObjectId(register_id)
+
+        result = await registerCollection.update_one(
+            {"_id": register_id},
+            {"$set": update_fields}
+        )
+
+        if result.modified_count == 0:
+            raise HTTPException(
+                status_code=404,
+                detail="Registro no encontrado o no se realizaron cambios"
+            )
+
+        return {"message": "Registro actualizado con éxito"}
+
+    except Exception as e:
+        print(f"Error actualizando registro: {str(e)}")
         raise HTTPException(
-            status_code=400, detail="El vehículo ya registró su salida")
-
-    update_fields = {'dateTimeExit': datetime.now()}
-
-    result = await registerCollection.update_one(
-        {"_id": (register.get("_id"))},
-        {"$set": update_fields}
-    )
-    if result.modified_count == 0:
-        raise HTTPException(
-            status_code=404, detail="Registro no encontrado o no se realizaron cambios")
-    return {"message": "Registro actualizado con éxito"}
-
+            status_code=500,
+            detail=f"Error actualizando registro: {str(e)}"
+        )
+    
 # * Function to differentiate if it is a car or motorcycle by the license plate
-
-
 async def isCarOrMotorbike(vehiclePlate: str):
     plate = vehiclePlate
     last_char = plate.split('-')[-1][-1]

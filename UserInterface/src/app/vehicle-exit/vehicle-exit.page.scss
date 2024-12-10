@@ -1,0 +1,233 @@
+.main-container {
+  background-color: white;
+  --ion-background-color: whithe !important;
+}
+
+.transparent-header {
+  background: transparent !important;
+  height: 0;
+}
+
+.logo {
+  width: 290px;
+  height: 220px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 12;
+}
+
+.icon {
+  color: black;
+  font-size: 20px;
+}
+
+.TitleHeader {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  color: #083C6C;
+  margin-right: 40px;
+  letter-spacing: -0.5px;
+}
+
+.logo-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo-section h2 {
+  font-size: 2rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.logo-section p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.content {
+  margin-left: 30%;
+  margin-right: 30%;
+  align-items: center;
+  display: block;
+  // text-align: center;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+.label-input {
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 12.1px;
+  text-align: left;
+  text-underline-position: under;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  padding: 0;
+  width: 300px;
+  margin-left: 25%;
+  border: none;
+  color: gray;
+  white-space: nowrap;
+}
+
+.label {
+  margin-left: 8px;
+  font-size: 20px;
+  // margin-top: 15px;
+}
+
+.native-input.sc-ion-input-md {
+  color: gray;
+}
+
+.label[_ngcontent-ng-c2475628025] {
+  /* margin-left: 8px; */
+  font-size: 20px;
+  margin-left: 130px;
+}
+
+.enter-button[_ngcontent-ng-c2475628025] {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 15px;
+  border-radius: 120px;
+}
+
+ion-butoon.enter-button[_ngcontent-ng-c2475628025] {
+  color: white;
+  background-color: #083C6C;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 120px;
+}
+
+@media (max-width: 400px) {
+  
+  .logo {
+    width: 290px;
+    height: 220px;
+  }
+  .icon {
+    font-size: 16px;
+  }
+
+  .info-section {
+    margin: 0;
+  }
+
+  /* Títulos más pequeños en móviles */
+  .Title {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24.2px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+
+  .TitleHeader {
+    font-size: 20px;
+    margin-right: 0;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+  }
+  
+  .logo-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .logo-section h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .logo-section p {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  .label[_ngcontent-ng-c2475628025][_ngcontent-ng-c2475628025] {
+    font-size: 20px;
+    margin-left: -55px;
+}
+  
+  .label-input {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 12.1px;
+    text-align: left;
+    text-underline-position: under;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
+    padding: 0;
+    width: 300px;
+    margin-left: -55px;
+    border: none;
+    color: gray;
+    white-space: nowrap;
+  }
+  
+  .label {
+    margin-left: 8px;
+    font-size: 20px;
+  }
+  
+  .native-input.sc-ion-input-md {
+    color: gray;
+  }
+  
+  .label[_ngcontent-ng-c2475628025] {
+    font-size: 20px;
+    margin-left: 130px;
+  }
+  
+  .enter-button[_ngcontent-ng-c2475628025] {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 120px;
+  }
+  
+  ion-butoon.enter-button[_ngcontent-ng-c2475628025] {
+    color: white;
+    background-color: #083C6C;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 120px;
+  }
+}

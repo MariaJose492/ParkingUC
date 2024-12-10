@@ -7,23 +7,29 @@ from datetime import datetime, timedelta
 import bcrypt
 
 # Function to encript the password
+
+
 def hash_password(password: str) -> str:
     salt = bcrypt.gensalt()
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
     return hashed_password.decode('utf-8')
 
 # Function to create a person
+
+
 async def createPersonController(personData: Person):
-    try: 
+    try:
         personData = Person(**personData.dict())
     except ValidationError as e:
-        errors = [{"field": err["loc"][-1], "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
+        errors = [{"field": err["loc"][-1],
+                   "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
         raise HTTPException(status_code=400, detail=errors)
-    
+
     existing_person = await personCollection.find_one({"code": personData.code})
     if existing_person:
-        raise HTTPException(status_code=400, detail="El código de persona ya existe")
-    
+        raise HTTPException(
+            status_code=400, detail="El código de persona ya existe")
+
     if personData.password:
         personData.password = hash_password(personData.password)
 
@@ -63,6 +69,8 @@ async def updatePersonController(personId: str, updateData: dict, charge: str):
     return {"message": "Datos actualizados con éxito"}
 
 # Function to list all persons
+
+
 async def listPersonController():
     persons = await personCollection.find().to_list(length=None)
     return [{**Person(**person).dict(), "_id": str(person["_id"])} for person in persons]
@@ -103,7 +111,7 @@ async def deletePersonController(personId: str):
             if dateTimeExit is None:
                 raise HTTPException(
                     status_code=400, detail="No se puede eliminar el registro si no se ha registrado la salida")
-    
+
     await registerCollection.delete_many({"personCode": personCode, "dateTimeExit": {"$lte": datetime.now() - timedelta(days=15)}})
 
     result = await personCollection.delete_one({"_id": ObjectId(personId)})
@@ -111,3 +119,32 @@ async def deletePersonController(personId: str):
         raise HTTPException(status_code=404, detail="Persona no encontrada")
 
     return {"message": "Persona eliminada exitosamente con los registros antiguos"}
+
+
+# Function to get a person by code
+async def getPersonByCode(personCode: int):
+    try:
+        print(f"Buscando persona con código: {personCode}")
+        person = await personCollection.find_one({"code": personCode})
+
+        if person:
+            print(f"Persona encontrada: {person}")
+            return {
+                "name": person["name"],
+                "lastName": person["lastName"],
+                "charge": person["charge"],
+                "code": person["code"]
+            }
+        else:
+            print(f"No se encontró persona con código: {personCode}")
+            raise HTTPException(
+                status_code=404,
+                detail=f"No se encontró persona con código: {personCode}"
+            )
+
+    except Exception as e:
+        print(f"Error buscando persona: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error al buscar persona: {str(e)}"
+        )

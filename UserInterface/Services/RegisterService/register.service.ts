@@ -16,14 +16,25 @@ export class RegisterService {
     return this.http.post(`${this.baseUrl}/createRegister/`, register);
   }
 
-  updateRegister(registerId: string, updateData:any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/updateRegister/${registerId}`, updateData );
+  updateRegister(vehiclePlate: string, updateData:any): Observable<any> {
+    const cleanPlate = vehiclePlate.trim();
+    return this.http.put(`${this.baseUrl}/updateRegister/${cleanPlate}`, updateData );
+    return this.http.put(`${this.baseUrl}/updateRegister/${vehiclePlate}`, updateData );
   }
 
   listRegister(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/listRegister/`);
+    return this.http.get(`${this.baseUrl}/listRegisters/`);
   }
-  deleteRegister(registerId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/deleteRegister/${registerId}`);
+  deleteRegister(vehiclePlate: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteRegister/${vehiclePlate}`);
+  }
+
+  getRegistersWithoutExit(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getRegistersWithoutExit`);
+  }
+
+  getRegisterByPlateAndDateTimeExit(plate: string): Observable<any> {
+    const cleanPlate = plate.trim();
+    return this.http.get(`${this.baseUrl}/getRegisterByPlateAndDateTimeExit/${cleanPlate}`);
   }
 }
