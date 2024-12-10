@@ -7,8 +7,6 @@ import { addIcons } from 'ionicons';
 import {
   IonContent,
   IonHeader,
-  IonTitle,
-  IonToolbar,
   IonCardTitle, 
   IonButton,
   IonIcon,
@@ -52,36 +50,30 @@ export class LoginPage {
   }
 
   async onLogin() {
-
     try {
-      const response = await this.loginService.login(this.email, this.password).toPromise();
+        const response = await this.loginService.login(this.email, this.password).toPromise();
 
-      if (response.token) {
-
-        await this.showAlert('Éxito', '¡Inicio de sesión exitoso!');
-        localStorage.setItem('token', response.token); 
-        this.router.navigate(['/home']); 
-      } else {
-
-        await this.showAlert('Error', 'Usuario o contraseña incorrectos');
-      }
+        if (response.message === "Inicio de sesión exitoso") {  
+            await this.showAlert('Bienvenido', '¡Inicio de sesión exitoso!');
+            // localStorage.setItem('token', response.user.token || "");  
+            this.router.navigate(['/home']);
+        } else {
+            await this.showAlert('Error', 'Usuario o contraseña incorrectos');
+        }
     } catch (error) {
-      
-      const err = error as HttpErrorResponse;
-      console.error('Error durante el inicio de sesión:', err);
+        const err = error as HttpErrorResponse;
+        console.error('Error durante el inicio de sesión:', err);
 
-      
-      if (err.status === 404) {
-        await this.showAlert('Error', 'Usuario no encontrado');
-      } else if (err.status === 401) {
-        await this.showAlert('Error', 'Contraseña incorrecta');
-      } else {
-        await this.showAlert('Error', 'Error desconocido, por favor intenta nuevamente');
-      }
+        if (err.status === 404) {
+            await this.showAlert('Error', 'Usuario no encontrado');
+        } else if (err.status === 401) {
+            await this.showAlert('Error', 'Contraseña incorrecta');
+        } else {
+            await this.showAlert('Error', 'Error desconocido, por favor intenta nuevamente');
+        }
     }
-  }
+}
 
-  // Método para mostrar alertas
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,
