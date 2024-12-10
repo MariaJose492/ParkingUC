@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
 // import { IonSearchbar } from '@ionic/angular/standalone';
-import { RegisterService } from 'services/RegisterService/register.service';
+import { RegisterService } from 'Services/RegisterService/register.service';
 
 import {
   IonContent,
@@ -29,7 +29,7 @@ import {
   IonSelectOption,
   IonSearchbar
 } from '@ionic/angular/standalone';
-import { PersonService } from 'services/personService/person.service';
+import { PersonService } from 'Services/PersonService/person.service';
 import { style } from '@angular/animations';
 
 @Component({
