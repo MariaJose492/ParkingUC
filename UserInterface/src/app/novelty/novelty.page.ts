@@ -23,7 +23,7 @@ export class NoveltyPage implements OnInit {
     vehiclePlate: [],
     description: '',
     date: ''
-  };
+  }
   constructor(private noveltyService: NoveltyService, private router: Router) { 
     addIcons({
       'home': home,
