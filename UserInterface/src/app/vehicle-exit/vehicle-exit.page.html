@@ -1,0 +1,61 @@
+<ion-header [translucent]="true" class="transparent-header">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+
+    <div class="logo-section">
+      <img class="logo" [src]="'assets/LogoParkingUc.png'" alt="LOGO">
+      <h2>Salida de vehículo</h2>
+      <p>Formulario de Registro de salida de parqueaderos Universidad de Caldas</p>
+    </div>
+
+    <div class="content">
+      <ion-label class="label" position="floating">Placa del Vehículo</ion-label>
+      <ion-item class="label-input">
+        <ion-select [(ngModel)]="selectedPlate" (ionChange)="onPlateChange()" interface="action-sheet"
+          [interfaceOptions]="customAlertOptions" placeholder="Seleccionar placa">
+          <ion-select-option *ngFor="let plate of vehicles" [value]="plate">
+            {{plate}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-label class="label">Hora de Ingreso</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.dateTimeEntrance" readonly></ion-input>
+      </ion-item>
+
+      <ion-label class="label">Nombre</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.personName" readonly></ion-input>
+      </ion-item>
+
+      <ion-label class="label">Cargo</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.personCharge" readonly></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="enter-button">
+      <ion-button class="enter-button" (click)="updateRegister()" [disabled]="!selectedPlate">
+        Registrar Salida
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

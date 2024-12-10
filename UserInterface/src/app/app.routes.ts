@@ -25,9 +25,14 @@ export const routes: Routes = [
   {
     path: 'camera',
     loadComponent: () => import('./camera/camera.page').then( m => m.CameraPage)
-  },  {
+  },
+  {
     path: 'novelty',
     loadComponent: () => import('./novelty/novelty.page').then( m => m.NoveltyPage)
+  },
+  {
+    path: 'vehicle-exit',
+    loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then( m => m.VehicleExitPage)
   },
   {
     path: 'in-out',
@@ -37,8 +42,9 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
-
-
-
+  {
+    path: 'list-register',
+    loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
+  },
 
 ];
