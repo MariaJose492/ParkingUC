@@ -83,3 +83,22 @@ async def getPersonByPersonCodeRoute(personCode: int):
         return person
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+@router.get("/getRegistersWithoutExit")
+async def getRegistersWithoutExitRoute():
+    try:
+        registers = await getRegistersWithoutExit()
+        return registers
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@router.get("/getRegisterByPlateAndDateTimeExit/{vehiclePlate}")
+async def getRegisterByPlateAndDateTimeExitRoute(vehiclePlate: str):
+    try:
+        register = await getRegisterByPlateAndDateTimeExit(vehiclePlate)
+        if not register:
+            raise HTTPException(
+                status_code=404, detail="Registro no encontrado")
+        return register
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
