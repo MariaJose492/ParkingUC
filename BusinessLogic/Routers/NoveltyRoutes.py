@@ -6,7 +6,7 @@ router = APIRouter()
 
 # Path to create a novelty
 @router.post("/createNovelty/")
-async def createPersonRoute(novelty: Novelty):
+async def createNoveltyRoute(novelty: Novelty):
     try:
         noveltyId = await createNoveltyController(novelty)
         return {"message": "Novedad creada con éxito", "novelty_id": noveltyId}

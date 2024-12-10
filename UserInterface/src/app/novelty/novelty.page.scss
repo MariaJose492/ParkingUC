@@ -1,0 +1,155 @@
+.main-container {
+    background-color: white;
+    height: 100%;
+}
+
+.buttonEnter {
+    color: white;
+    --background: #083C6C;
+}
+
+.transparent-header {
+    background: transparent !important;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+}
+
+.icon {
+    color: black;
+    font-size: 20px;
+}
+
+.TitleHeader {
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: #083C6C;
+    margin-right: 40px;
+}
+
+.label-input {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.input {
+    width: 100%;
+    /* Ancho completo */
+    height: 40px;
+    /* Altura constante */
+    border-radius: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el tamaño */
+}
+
+ion-item {
+    --inner-padding-end: 0;
+    border-radius: 8px;
+    width: 100%;
+    padding: 0;
+    /* Evita el espaciado extra */
+}
+
+.enter-button {
+    display: flex;
+    justify-content: center;
+    // margin: 30px;
+    padding-bottom: 40px;
+}
+
+.enter-button ion-button {
+    width: 15%;
+    border-radius: 100px;
+    background-color: #e0e0e0;
+}
+
+.logo {
+    width: 200px; 
+    height: auto; 
+    margin: 0 auto; 
+    display: block;
+}
+
+.logo-section {
+    text-align: center;
+    margin: 20px 0;
+
+    h1 {
+        font-size: 5rem;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #666;
+    }
+}
+
+ion-grid {
+    margin: 20px auto;
+    width: 80%;
+}
+
+ion-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    ion-row {
+        display: block;
+    }
+
+    .logo-section h1 {
+        font-size: 4rem;
+    }
+
+    .logo-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .logo-section p {
+        font-size: 0.8rem;
+    }
+
+    .enter-button ion-button {
+        width: 30%;
+    }
+
+    .main-container {
+        height: auto;
+    }
+
+    .input {
+        width: 100%;
+        /* Asegura que ocupe todo el ancho */
+        height: 40px;
+        /* Mantiene una altura constante en pantallas pequeñas */
+    }
+}

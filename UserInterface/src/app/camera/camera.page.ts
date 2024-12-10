@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { home, arrowUndo, pencilOutline, pencilSharp } from 'ionicons/icons';
+import { home, arrowUndo } from 'ionicons/icons';
+
 import { 
   IonContent, 
   IonHeader, 
@@ -27,7 +28,7 @@ import {
 } from '@ionic/angular/standalone';
 
 
-import { RegisterService } from 'Services/RegisterService/register.service'
+import { RegisterService } from 'Services/RegisterService/register.service';
 import { CameraService } from 'Services/CameraService/camera.service';
 
 @Component({
@@ -68,9 +69,7 @@ export class CameraPage implements OnInit, OnDestroy {
   constructor(private cameraService: CameraService, private registerService: RegisterService, private router: Router) {
     addIcons({
       'home': home,
-      'arrow-undo': arrowUndo,
-      'pencil-outline': pencilOutline,
-      'pencil-sharp': pencilSharp
+      'arrow-undo': arrowUndo
     });
   }
 
@@ -80,7 +79,7 @@ export class CameraPage implements OnInit, OnDestroy {
 
   register ={
     vehicleType: '',
-    personCode: 0,
+    personCode: null,
     vehiclePlate: '',
     dateTimeEntrance: '',
     dateTimeExit: null,
@@ -105,7 +104,7 @@ export class CameraPage implements OnInit, OnDestroy {
         (response) => {
           console.log('Registro creado:', response);
           alert('Registro creado con éxito');
-          this.register = { vehicleType: '', personCode: 0, vehiclePlate: '', dateTimeEntrance: new Date().toISOString(), dateTimeExit: null };
+          this.register = { vehicleType: '', personCode: null, vehiclePlate: '', dateTimeEntrance: new Date().toISOString(), dateTimeExit: null };
         },
         (error) => {
           console.error('Error al crear el registro:', error);

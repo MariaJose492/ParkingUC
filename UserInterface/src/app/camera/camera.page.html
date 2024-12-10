@@ -61,8 +61,7 @@
               </ion-item>
               <ion-label class="label-input" position="stacked">Placa del vehículo</ion-label>
               <ion-item class="input">
-                <ion-input [(ngModel)]="register.vehiclePlate" (input)="onPlateChange($event)"
-                  placeholder="">
+                <ion-input [(ngModel)]="register.vehiclePlate" (input)="onPlateChange($event)" placeholder="">
                 </ion-input>
               </ion-item>
             </ion-col>
@@ -71,8 +70,10 @@
               <ion-item class="input">
                 <ion-input [(ngModel)]="register.personCode" [ngModelOptions]="{standalone: true}"
                   type="text"></ion-input>
+                <ion-button fill="clear" slot="end">
+                </ion-button>
               </ion-item>
-              <ion-label class="label-input" position="stacked">Email</ion-label>
+              <ion-label class="label-input" position="stacked">Correo electrónico</ion-label>
               <ion-item class="input">
                 <ion-input type="email"></ion-input>
                 <ion-button fill="clear" slot="end">
@@ -92,13 +93,11 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+        <div class="enter-button" style="margin-top: 20px;">
+          <ion-button class="buttonEnter" (click)="createRegister()">Enter</ion-button>
+        </div>
       </ion-card-content>
     </ion-card>
-
-
-    <div class="enter-button" style="margin-top: 20px;">
-      <ion-button class="buttonEnter" (click)="createRegister()">Enter</ion-button>
-    </div>
 
   </div>
 </ion-content>
