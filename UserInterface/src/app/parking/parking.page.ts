@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonButton, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { RegisterService } from 'Services/RegisterService/register.service';
 import { home, arrowUndo, pencilOutline, pencilSharp } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-parking',
   templateUrl: './parking.page.html',
   styleUrls: ['./parking.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonCardHeader, IonCardTitle]
+  imports: [IonContent, IonHeader, IonButton, CommonModule, FormsModule, IonCardContent, IonCardHeader, IonCardTitle]
 })
 export class ParkingPage implements OnInit {
 
@@ -20,7 +21,7 @@ export class ParkingPage implements OnInit {
     motoSpaces: 0
   };
 
-  constructor(private parkingService: RegisterService) { }
+  constructor(private parkingService: RegisterService, private router: Router) { }
 
   ngOnInit() {
     this.loadParkingSpaces();
@@ -43,4 +44,11 @@ export class ParkingPage implements OnInit {
     );
   }
 
+  Login(){
+    this.router.navigate(['/login'])
+  }
+
+  Register() {
+    this.router.navigate(['/create-person'])
+  }
 }
