@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash, createOutline } from 'ionicons/icons';
-import { PersonService } from 'services/personService/person.service';
+import { PersonService } from 'Services/PersonService/person.service';
 
 @Component({
   selector: 'app-list-person',
@@ -34,7 +34,7 @@ export class ListPersonPage implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 
   deletePerson(personId: string): void {
