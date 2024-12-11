@@ -34,13 +34,21 @@ export const routes: Routes = [
     path: 'vehicle-exit',
     loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then( m => m.VehicleExitPage)
   },
-
+  {
     path: 'in-out',
-    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
+    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage),
+  },
+  {
+    path: 'list-person',
+    loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)
   },
   {
     path: 'list-register',
     loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
+  },  {
+    path: 'list-novelty',
+    loadComponent: () => import('./list-novelty/list-novelty.page').then( m => m.ListNoveltyPage)
   },
+
 
 ];

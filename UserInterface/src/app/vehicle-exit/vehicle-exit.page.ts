@@ -10,21 +10,11 @@ import { RegisterService } from 'services/RegisterService/register.service';
 import {
   IonContent,
   IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonButtons,
   IonButton,
   IonIcon,
   IonItem,
   IonLabel,
-  IonCard,
-  IonCardHeader,
   IonCardTitle,
-  IonCardContent,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonInput,
   IonSelect,
   IonSelectOption,
   IonSearchbar
@@ -45,18 +35,10 @@ import { style } from '@angular/animations';
     IonItem,
     IonLabel,
     IonSelectOption,
-    IonCard,
-    IonCardHeader,
     IonCardTitle,
-    IonCardContent,
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonInput,
     CommonModule,
     FormsModule,
-    IonSelect,
-    IonSearchbar]
+    IonSelect]
 })
 export class VehicleExitPage implements OnInit {
 

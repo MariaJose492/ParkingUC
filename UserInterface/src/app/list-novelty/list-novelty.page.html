@@ -1,0 +1,54 @@
+<ion-header [translucent]="true" class="transparent-header">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+
+    <div class="logo-section">
+      <h1>REGISTROS DE NOVEDADES</h1>
+      <p>Listado de las novedades ocurridas en el parqueadero</p>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Vehículos</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Mostrar los registros usando *ngFor -->
+              <tr *ngFor="let novelty of novelties">
+                <td>{{ novelty.vehiclePlate }}</td>
+                <td>{{ novelty.description }}</td>
+                <td>
+                  <ion-button fill="clear" color="danger" (click)="deleteNovelty(novelty._id)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                  </ion-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

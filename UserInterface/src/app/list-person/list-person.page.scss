@@ -1,0 +1,182 @@
+.main-container {
+    background-color: white;
+}
+
+.transparent-header {
+    background: transparent !important;
+    height: 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+}
+
+.buttonEnter {
+    color: white;
+    --background: #083C6C;
+}
+
+.icon {
+    color: black;
+    font-size: 20px;
+    // margin-left: 5px;
+}
+
+.TitleHeader {
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    color: #083C6C;
+    margin-right: 40px;
+    letter-spacing: -0.5px;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    background-color: #f5f5f5;
+}
+
+/* Estilo para el h1 */
+.logo-section h1 {
+    color: #083C6C;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.logo-section p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.records-table th,
+.records-table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+}
+
+.records-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.records-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.records-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.records-table td ion-button {
+    margin: 0;
+    padding: 0;
+}
+
+// En list-person.page.scss
+ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+}
+
+ion-input {
+    --padding-start: 8px;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 4px;
+}
+
+// Estilos existentes
+.main-container {
+    background-color: white;
+}
+
+// .transparent-header {
+//     background: transparent !important;
+//     height: 0;
+// }
+
+// Nuevos estilos para edición inline
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 10px;
+
+        // Estilos específicos para los elementos de edición
+        ion-item {
+            --padding-start: 0;
+            --inner-padding-end: 0;
+            --background: transparent;
+            --border-color: transparent;
+
+            &::part(native) {
+                padding: 0;
+                background: transparent;
+            }
+        }
+
+        ion-input {
+            --padding-start: 8px;
+            --background: #c0def0;
+            border: 1px solid var(--ion-color-medium);
+            border-radius: 4px;
+            margin: 0;
+            min-height: 36px;
+        }
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    td ion-button {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// Estilos específicos para modo edición
+.editing-mode {
+    ion-item {
+        margin: -10px;  // Compensar el padding de la celda
+    }
+}

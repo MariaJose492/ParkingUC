@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonContent, IonHeader, IonItem, IonCardTitle, IonLabel, IonInput, IonIcon, IonButton, IonBackButton, IonSelect, IonSelectOption, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { PersonService } from 'services/personService/person.service';
-import { IonContent, IonHeader, IonItem, IonLabel, IonInput, IonIcon, IonSelect, IonSelectOption, IonButton, IonBackButton,IonCardTitle, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
-import { PersonService } from 'Services/PersonService/person.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
@@ -134,21 +132,21 @@ export class CreatePersonPage implements OnInit {
   }
 
   // Call the service to update a person
-  updatePerson(personId: string): void {
-    const updateData = {
-      phone: '',
-      email: '',
-    };
+  // updatePerson(personId: string): void {
+  //   const updateData = {
+  //     phone: '',
+  //     email: '',
+  //   };
 
-    this.personService.updatePerson(personId, updateData).subscribe(
-      (response) => {
-        console.log('Persona actualizada:', response);
-      },
-      (error) => {
-        console.error('Error al actualizar persona:', error);
-      }
-    );
-  }
+  //   this.personService.updatePerson(personId, updateData).subscribe(
+  //     (response) => {
+  //       console.log('Persona actualizada:', response);
+  //     },
+  //     (error) => {
+  //       console.error('Error al actualizar persona:', error);
+  //     }
+  //   );
+  // }
 
   // Call the service to delete a person
   deletePerson(personId: string): void {
