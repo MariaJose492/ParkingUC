@@ -22,3 +22,6 @@ registerCollection = db["register"]
 
 # Acceder a la colección novedad
 noveltyCollection = db["novelty"]
+
+# Acceder a la colección parkingSpaces
+parkingSpacesCollection = db["parkingSpaces"]

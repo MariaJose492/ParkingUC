@@ -1,13 +1,12 @@
 from bson import ObjectId
 from pydantic import ValidationError
-from Config.DatabaseConnection import registerCollection, personCollection
+from Config.DatabaseConnection import registerCollection, personCollection, parkingSpacesCollection
 from Models.register import Register
+from Models.parkingSpaces import ParkingSpaces
 from fastapi import HTTPException
 from datetime import datetime, timedelta
 
 # * Function to create a register
-
-
 async def createRegisterController(registerData: Register):
     try:
         registerData = Register(**registerData.dict())
@@ -16,7 +15,6 @@ async def createRegisterController(registerData: Register):
                    "message": "No se pueden usar caracteres especiales"} for err in e.errors()]
         raise HTTPException(status_code=400, detail=errors)
 
-    # Verificar si la persona existe
     existing_person = await personCollection.find_one({"code": registerData.personCode})
     if not existing_person:
         raise HTTPException(
@@ -29,14 +27,13 @@ async def createRegisterController(registerData: Register):
     newRegister = registerData.dict()
     newRegister["vehicleType"] = vehicleType
     result = await registerCollection.insert_one(newRegister)
-    return str(result.inserted_id)
 
+    return str(result.inserted_id)
 
 # * Function to list all registers
 async def listRegisterController():
     registers = await registerCollection.find().to_list(length=None)
     return [{**Register(**register).dict(), "_id": str(register["_id"])} for register in registers]
-
 
 # * Function to get a vehicle by plate
 async def getRegisterByPlate(vehiclePlate: str):
@@ -44,7 +41,6 @@ async def getRegisterByPlate(vehiclePlate: str):
     if register:
         register["_id"] = str(register["_id"])
     return register
-
 
 # * Function to get register that have the dateTimeExit null, by vehiclePlate.
 async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
@@ -61,15 +57,9 @@ async def getRegisterByPlateAndDateTimeExit(vehiclePlate: str):
     return None
 
 # *Function to get all register that have dateTimeExit null
-
-
 async def getRegistersWithoutExit():
-    # Consulta para obtener solo las placas (vehiclePlate) donde dateTimeExit es None
     registers = await registerCollection.find({"dateTimeExit": None}, {"vehiclePlate": 1, "_id": 0}).to_list(length=None)
-
-    # Retorna solo las placas
     return [register["vehiclePlate"] for register in registers]
-
 
 # * Function to get a person by codePerson
 async def getPersonByPersonCode(personCode: int):
@@ -87,13 +77,10 @@ async def getPersonByPersonCode(personCode: int):
 # * Function to delete a vehicle by plate
 #  Parameters:
 #  vehiclePlate (int): The vehicle plate to delete.
-
 # Looks up the vehicle registration using the license plate, checks if the dateTimeExit field is present in the record,
 # calculates the time difference between the current date and dateTimeExit and if 15 days or less have passed since
 # dateTimeExit, does not allow deleting the record, but does It's been 15 days or more, delete the registration from the
 # registerCollection collection.
-
-
 async def deleteRegisterByPlate(vehiclePlate: int):
     register = await getRegisterByPlate(vehiclePlate)
     if not register:
@@ -111,7 +98,6 @@ async def deleteRegisterByPlate(vehiclePlate: int):
 
     result = await registerCollection.delete_one({"vehiclePlate": vehiclePlate})
     return result.deleted_count > 0
-
 
 # * Function to update a register by plate
 # Through getRegisterByPlateAndDateTimeExit, the record that has not yet exited is searched, according to the plate that is
@@ -152,6 +138,43 @@ async def updateRegisterController(vehiclePlate: str, updateData: dict):
             detail=f"Error actualizando registro: {str(e)}"
         )
     
+async def updateParkingSpaces(vehicleType: str, is_entry: bool):
+    try:
+        parkingSpaces = await parkingSpacesCollection.find_one()
+        if not parkingSpaces:
+            raise HTTPException(
+                status_code=500,
+                detail="No se pudo obtener la disponibilidad de espacios"
+            )
+
+        print(f"Actualizando para vehículo: {vehicleType}, Entrada: {is_entry}")
+
+        if vehicleType == "Carro":
+            parkingSpaces["carSpaces"] += -1 if is_entry else 1
+            print(f"Espacios para Carro: {parkingSpaces['carSpaces']}")
+
+        elif vehicleType == "Moto":
+            parkingSpaces["motoSpaces"] += -1 if is_entry else 1
+            print(f"Espacios para Moto: {parkingSpaces['motoSpaces']}")
+
+        if parkingSpaces["carSpaces"] < 0 or parkingSpaces["motoSpaces"] < 0:
+            raise HTTPException(
+                status_code=400,
+                detail="No hay espacios disponibles para este tipo de vehículo"
+            )
+
+        await parkingSpacesCollection.update_one(
+            {"_id": parkingSpaces["_id"]},
+            {"$set": {"carSpaces": parkingSpaces["carSpaces"], "motoSpaces": parkingSpaces["motoSpaces"]}}
+        )
+
+    except Exception as e:
+        print(f"Error actualizando disponibilidad: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error actualizando disponibilidad: {str(e)}"
+        )
+
 # * Function to differentiate if it is a car or motorcycle by the license plate
 async def isCarOrMotorbike(vehiclePlate: str):
     plate = vehiclePlate
