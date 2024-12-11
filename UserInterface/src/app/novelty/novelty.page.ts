@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonItem, IonLabel, IonInput, IonCardHeader, IonCardTitle, IonIcon,IonTextarea, IonButton, IonBackButton, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { NoveltyService } from 'services/NoveltyService/novelty.sevice';
+import { NoveltyService } from 'Services/NoveltyService/novelty.sevice';
 import { home, arrowUndo, pencilOutline, pencilSharp } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
@@ -74,6 +74,6 @@ export class NoveltyPage implements OnInit {
 
   // Redirige a la ruta '/home'
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 }

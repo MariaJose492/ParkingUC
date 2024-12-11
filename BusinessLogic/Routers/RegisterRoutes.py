@@ -108,3 +108,21 @@ async def getRegisterByPlateAndDateTimeExitRoute(vehiclePlate: str):
         return register
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+# Path to get parking spaces availability
+@router.get("/getParkingSpaces")
+async def getParkingSpacesRoute():
+    try:
+        parkingSpaces = await parkingSpacesCollection.find_one()
+        if not parkingSpaces:
+            raise HTTPException(
+                status_code=500,
+                detail="No se pudo obtener la disponibilidad de espacios"
+            )
+        # Devuelves los espacios disponibles para carros y motos
+        return {"carSpaces": parkingSpaces["carSpaces"], "motoSpaces": parkingSpaces["motoSpaces"]}
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error al obtener la disponibilidad de los espacios: {str(e)}"
+        )

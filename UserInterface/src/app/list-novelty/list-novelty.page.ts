@@ -5,8 +5,8 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash } from 'ionicons/icons';
-import { NoveltyService } from 'services/NoveltyService/novelty.sevice';
-import { AuthService } from 'services/AuthService/auth.service';
+import { AuthService } from 'Services/AuthService/auth.service';
+import { NoveltyService } from 'Services/NoveltyService/novelty.sevice';
 
 @Component({
   selector: 'app-list-novelty',
@@ -31,7 +31,7 @@ export class ListNoveltyPage implements OnInit {
   }
 
   goHome(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 
   deleteNovelty(noveltyId: string): void {

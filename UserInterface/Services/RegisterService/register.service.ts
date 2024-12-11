@@ -19,7 +19,6 @@ export class RegisterService {
   updateRegister(vehiclePlate: string, updateData:any): Observable<any> {
     const cleanPlate = vehiclePlate.trim();
     return this.http.put(`${this.baseUrl}/updateRegister/${cleanPlate}`, updateData );
-    return this.http.put(`${this.baseUrl}/updateRegister/${vehiclePlate}`, updateData );
   }
 
   listRegister(): Observable<any> {
@@ -36,5 +35,9 @@ export class RegisterService {
   getRegisterByPlateAndDateTimeExit(plate: string): Observable<any> {
     const cleanPlate = plate.trim();
     return this.http.get(`${this.baseUrl}/getRegisterByPlateAndDateTimeExit/${cleanPlate}`);
+  }
+
+  getParkingSpaces(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getParkingSpaces`);  
   }
 }
