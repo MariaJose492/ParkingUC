@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -41,14 +42,25 @@ export const routes: Routes = [
   {
     path: 'list-person',
     loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)
+  {  
+    path: 'in-out',
+    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
   {
     path: 'list-register',
     loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
-  },  {
+  },
+  {
     path: 'list-novelty',
     loadComponent: () => import('./list-novelty/list-novelty.page').then( m => m.ListNoveltyPage)
   },
 
 
 ];
+  },
+
+]

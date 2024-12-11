@@ -23,3 +23,10 @@ URL BACKEND
 
 Actualizar requerimientos (npm i)
 * py -m pip install -r requirements.txt
+
+NOTIFICACIONES
+* npm install axios
+*pip install requests
+* npm install express @bot-whatsapp/bot @bot-whatsapp/provider-baileys ts-node typescript
+
+
