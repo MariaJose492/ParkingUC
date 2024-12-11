@@ -47,9 +47,4 @@ export const routes: Routes = [
     path: 'list-register',
     loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
   },
-=========
-
-
->>>>>>>>> Temporary merge branch 2
-
 ];
