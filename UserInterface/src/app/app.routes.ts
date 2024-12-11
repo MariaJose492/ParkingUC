@@ -1,5 +1,5 @@
+import { Routes } from '@angular/router';
 import { Routes, RouterModule } from '@angular/router';
-
 
 export const routes: Routes = [
   {
@@ -35,6 +35,13 @@ export const routes: Routes = [
     path: 'vehicle-exit',
     loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then( m => m.VehicleExitPage)
   },
+  {
+    path: 'in-out',
+    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage),
+  },
+  {
+    path: 'list-person',
+    loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)
   {  
     path: 'in-out',
     loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
@@ -46,6 +53,14 @@ export const routes: Routes = [
   {
     path: 'list-register',
     loadComponent: () => import('./list-register/list-register.page').then( m => m.ListRegisterPage)
+  },
+  {
+    path: 'list-novelty',
+    loadComponent: () => import('./list-novelty/list-novelty.page').then( m => m.ListNoveltyPage)
+  },
+
+
+];
   },
 
 ]

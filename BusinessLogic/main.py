@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+# from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes
 from Routers import PersonRoutes, RegisterRoutes, NoveltyRoutes, ProcessingRoutes, LoginRoutes
 from fastapi.middleware.cors import CORSMiddleware
 import pytesseract
