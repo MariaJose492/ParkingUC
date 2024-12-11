@@ -9,10 +9,13 @@ router = APIRouter()
 async def createRegisterRoute(register: Register):
     try:
         register_id = await createRegisterController(register)
+
+        vehicleType = register.vehicleType
+        await updateParkingSpaces(vehicleType, is_entry=True)
+
         return {"message": "Registro creado con éxito", "register_id": register_id}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
 
 # Path to list all registers
 @router.get("/listRegisters/")
@@ -22,7 +25,6 @@ async def listRegistersRoute():
         return registers
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 
 # Path to get register by plate
 @router.get("/getRegister/{vehiclePlate}/")
@@ -35,7 +37,6 @@ async def getRegisterByPlateRoute(vehiclePlate: str):
         return register
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 
 # Path to delete a register after 15 days
 # Find de register by plate
@@ -60,12 +61,17 @@ async def deleteRegisterRoute(vehiclePlate: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-
 # Path to update a Register
 @router.put("/updateRegister/{vehiclePlate}")
 async def updateRegisterRoute(vehiclePlate: str, updateData: dict):
     try:
         result = await updateRegisterController(vehiclePlate, updateData)
+
+        if "dateTimeExit" in updateData:  # Verificamos si se actualiza la fecha de salida
+            register = await getRegisterByPlate(vehiclePlate)
+            vehicleType = register.get("vehicleType")
+            await updateParkingSpaces(vehicleType, is_entry=False)
+
         return result
     except HTTPException as e:
         raise e
