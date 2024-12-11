@@ -55,9 +55,8 @@ export class LoginPage {
 
         if (response.message === "Inicio de sesión exitoso") {  
             await this.showAlert('Bienvenido', '¡Inicio de sesión exitoso!');
-            localStorage.setItem('user', JSON.stringify(response.user)); 
-            console.log('Usuario:', localStorage);
-            this.router.navigate(['/home-page']);
+            // localStorage.setItem('token', response.user.token || "");  
+            this.router.navigate(['/menu']);
         } else {
             await this.showAlert('Error', 'Usuario o contraseña incorrectos');
         }
@@ -85,6 +84,6 @@ export class LoginPage {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 }

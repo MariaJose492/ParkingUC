@@ -1,0 +1,37 @@
+<ion-header [translucent]="true" class="transparent-header">
+  <!-- Header content can be added here if needed -->
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+
+      <div class="link-section">
+        <ion-button fill="clear" (click)="Login()" class="link-button">Iniciar sesión</ion-button>
+        <ion-button fill="clear" (click)="Register()" class="link-button">Registrarse</ion-button>
+      </div>
+
+    </div>
+
+    <div class="contenedor">
+      <div class="logo-section">
+        <img class="logo" [src]="'assets/LogoParkingUc.png'" alt="LOGO">
+      </div>
+
+      <ion-card-content class="espacios2">
+        <p class="espacios">
+          Espacios disponibles Carros:
+          <span class="circle-number">{{ parkingSpaces.carSpaces }}</span>
+        </p>
+        <p class="espacios">
+          Espacios disponibles Motos:
+          <span class="circle-number">{{ parkingSpaces.motoSpaces }}</span>
+        </p>
+      </ion-card-content>
+    </div>
+  </div>
+</ion-content>

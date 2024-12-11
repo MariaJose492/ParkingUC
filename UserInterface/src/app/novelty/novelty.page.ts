@@ -74,6 +74,6 @@ export class NoveltyPage implements OnInit {
 
   // Redirige a la ruta '/home'
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 }

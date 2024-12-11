@@ -220,7 +220,7 @@ export class CameraPage implements OnInit, OnDestroy {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 
 }

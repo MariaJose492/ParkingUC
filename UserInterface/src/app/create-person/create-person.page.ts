@@ -132,21 +132,21 @@ export class CreatePersonPage implements OnInit {
   }
 
   // Call the service to update a person
-  updatePerson(personId: string): void {
-    const updateData = {
-      phone: '',
-      email: '',
-    };
+  // updatePerson(personId: string): void {
+  //   const updateData = {
+  //     phone: '',
+  //     email: '',
+  //   };
 
-    this.personService.updatePerson(personId, updateData).subscribe(
-      (response) => {
-        console.log('Persona actualizada:', response);
-      },
-      (error) => {
-        console.error('Error al actualizar persona:', error);
-      }
-    );
-  }
+  //   this.personService.updatePerson(personId, updateData).subscribe(
+  //     (response) => {
+  //       console.log('Persona actualizada:', response);
+  //     },
+  //     (error) => {
+  //       console.error('Error al actualizar persona:', error);
+  //     }
+  //   );
+  // }
 
   // Call the service to delete a person
   deletePerson(personId: string): void {
@@ -174,6 +174,6 @@ export class CreatePersonPage implements OnInit {
 
   // Redirige a la ruta '/home'
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 }

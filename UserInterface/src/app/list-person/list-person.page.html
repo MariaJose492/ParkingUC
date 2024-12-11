@@ -1,0 +1,66 @@
+<ion-header [translucent]="true" class="transparent-header">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+
+    <div class="logo-section">
+      <h1>REGISTROS DE PERSONAS</h1>
+      <p>Listado de las personas que hacen uso del parqueadero de la Universidad</p>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Documento</th>
+                <th>Cargo</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <td>Acciones</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let person of persons">
+                <td>{{ person.name }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>{{ person.code }}</td>
+                <td>{{ person.charge }}</td>
+                <td>{{ person.phone }}</td>
+                <td>{{ person.email || 'N/A'}}</td>
+                <td>
+                  <!-- Botones de acción -->
+                  <div>
+                    <ion-button fill="clear" color="danger"
+                      (click)="deletePerson(person._id)">
+                      <ion-icon slot="icon-only" name="trash"></ion-icon>
+                    </ion-button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

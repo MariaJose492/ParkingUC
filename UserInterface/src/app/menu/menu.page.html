@@ -1,0 +1,95 @@
+<ion-header [translucent]="true" class="transparent-header">
+  <!-- Header content can be added here if needed -->
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-container">
+
+    <div class="header-content">
+      <div>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="arrow-undo"></ion-icon>
+        </ion-button>
+        <ion-button class="icon" fill="clear" (click)="goHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <ion-card-title class="TitleHeader">PARKINGUC</ion-card-title>
+      </div>
+    </div>
+
+
+    <div class="contenedor">
+      <div class="up">
+        <ion-card class="custom-card" (click)="navigateTo('in-out')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Registro/Salida</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card" (click)="navigateTo('novelty')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Novedades</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card" (click)="navigateTo('create-person')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Registrar Persona</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="down">
+        <ion-card class="custom-card" (click)="navigateTo('list-persons')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Listar Persona</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card" (click)="navigateTo('list-registers')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Listar Registros</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="custom-card" (click)="navigateTo('list-novelties')">
+          <img
+            src="../../assets/img/LogoParkingUc.png"
+            alt="Logo"
+            class="logo"
+          />
+          <ion-card-content>
+            <ion-card-title>Listar Novedades</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
