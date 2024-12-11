@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -10,10 +9,6 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },
-  {
-    path: 'home-page',
-    loadComponent: () => import('./home-page/home-page.page').then( m => m.HomePagePage)
   },
   {
     path: 'edit-user',
@@ -42,6 +37,7 @@ export const routes: Routes = [
   {
     path: 'list-person',
     loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)
+  },
   {  
     path: 'in-out',
     loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
@@ -58,9 +54,9 @@ export const routes: Routes = [
     path: 'list-novelty',
     loadComponent: () => import('./list-novelty/list-novelty.page').then( m => m.ListNoveltyPage)
   },
-
-
-];
+  {
+    path: 'parking',
+    loadComponent: () => import('./parking/parking.page').then( m => m.ParkingPage)
   },
 
-]
+];

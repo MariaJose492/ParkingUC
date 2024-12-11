@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash } from 'ionicons/icons';
-import { RegisterService } from 'services/RegisterService/register.service';
+import { RegisterService } from 'Services/RegisterService/register.service';
 
 @Component({
   selector: 'app-list-register',
@@ -32,7 +32,7 @@ export class ListRegisterPage implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/parking']);
   }
 
   deleteRegister(vehiclePlate: string): void {
