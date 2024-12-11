@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash, createOutline } from 'ionicons/icons';
+import { AuthService } from 'Services/AuthService/auth.service';
 import { PersonService } from 'Services/PersonService/person.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class ListPersonPage implements OnInit {
   // editingPersonId: string | null = null; // En lugar de editingPerson
   // editingData: any = null; // Para almacenar
 
-  constructor(private router: Router, private personService: PersonService) {
+  constructor(private router: Router, private personService: PersonService, public authService: AuthService) {
     addIcons({
       'home': home,
       'arrow-undo': arrowUndo,
@@ -29,6 +30,9 @@ export class ListPersonPage implements OnInit {
     });
   }
 
+  showEditButtons(): boolean {
+    return this.authService.canEditPerson();
+  }
   ngOnInit() {
     this.listPerson();
   }
@@ -85,43 +89,6 @@ export class ListPersonPage implements OnInit {
       }
     );
   }
-
-  // Método para guardar cambios
-  // updatePerson(personId: string, updateData: any) {
-  //   // Obtener el cargo actual de la persona
-  //   const person = this.persons.find(p => p._id === personId);
-  //   if (!person) return;
-
-  //   this.personService.updatePerson(personId, updateData, person.charge).subscribe(
-  //     (response) => {
-  //       console.log('Persona actualizada:', response);
-  //       // Actualizar la lista local
-  //       this.persons = this.persons.map(p =>
-  //         p._id === personId ? { ...p, ...updateData } : p
-  //       );
-  //       alert('Persona actualizada con éxito');
-  //     },
-  //     (error) => {
-  //       console.error('Error al actualizar:', error);
-  //       alert('Error al actualizar la persona');
-  //     }
-  //   );
-  // }
-
-
-  // startEditing(person: any) {
-  //   this.editingPersonId = person._id;
-  //   // Solo guardar los campos editables
-  //   this.editingData = {
-  //     phone: person.phone,
-  //     email: person.email
-  //   };
-  // }
-
-  // cancelEdit() {
-  //   this.editingPersonId = null;
-  //   this.editingData = null;
-  // }
 
 
 }

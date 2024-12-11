@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
+import { AuthService } from 'services/AuthService/auth.service';
 // import { IonSearchbar } from '@ionic/angular/standalone';
-import { RegisterService } from 'Services/RegisterService/register.service';
 
 import {
   IonContent,
@@ -19,8 +19,9 @@ import {
   IonSelectOption,
   IonSearchbar
 } from '@ionic/angular/standalone';
-import { PersonService } from 'Services/PersonService/person.service';
 import { style } from '@angular/animations';
+import { PersonService } from 'services/personService/person.service';
+import { RegisterService } from 'services/RegisterService/register.service';
 
 @Component({
   selector: 'app-vehicle-exit',
@@ -46,6 +47,7 @@ export class VehicleExitPage implements OnInit {
     private registerService: RegisterService,
     private personService: PersonService,
     private datePipe: DatePipe,
+    public authService: AuthService,
     private router: Router) {
     addIcons({
       'home': home,
@@ -75,8 +77,12 @@ export class VehicleExitPage implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log('Iniciando componente...')
-    this.loadVehicles();
+     // Verificar permisos
+     if (!this.authService.canAccessVehicleManagement()) {
+      // Redirigir o mostrar mensaje
+      alert('No tienes permiso para acceder a esta página');
+      this.router.navigate(['/home']);
+    }
   }
 
 

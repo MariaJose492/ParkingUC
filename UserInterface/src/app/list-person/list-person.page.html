@@ -35,7 +35,7 @@
                 <th>Cargo</th>
                 <th>Teléfono</th>
                 <th>Email</th>
-
+                <td>Acciones</td>
               </tr>
             </thead>
             <tbody>
@@ -46,43 +46,14 @@
                 <td>{{ person.charge }}</td>
                 <td>{{ person.phone }}</td>
                 <td>{{ person.email || 'N/A'}}</td>
-                <!-- <td>{{ Acciones }}</td> -->
                 <td>
-                  <!-- Teléfono -->
-                  <!-- <div *ngIf="editingPersonId !== person._id">
-                    {{ person.phone }}
-                  </div>
-                  <ion-item *ngIf="editingPersonId === person._id">
-                    <ion-input [(ngModel)]="editingData.phone" type="tel"></ion-input>
-                  </ion-item>
-                </td>
-                <td> -->
-                  <!-- Email -->
-                  <!-- <div *ngIf="editingPersonId !== person._id">
-                    {{ person.email || 'N/A' }}
-                  </div>
-                  <ion-item *ngIf="editingPersonId === person._id">
-                    <ion-input [(ngModel)]="editingData.email" type="email"></ion-input>
-                  </ion-item>
-                </td>
-                <td> -->
                   <!-- Botones de acción -->
-                  <div >
-                    <!-- <ion-button fill="clear" color="primary" (click)="startEditing(person)">
-                      <ion-icon slot="icon-only" name="create"></ion-icon>
-                    </ion-button> -->
-                    <ion-button fill="clear" color="danger" (click)="deletePerson(person._id)">
+                  <div>
+                    <ion-button *ngIf="authService.canEditPerson()" fill="clear" color="danger"
+                      (click)="deletePerson(person._id)">
                       <ion-icon slot="icon-only" name="trash"></ion-icon>
                     </ion-button>
                   </div>
-                  <!-- <div *ngIf="editingPersonId === person._id">
-                    <ion-button fill="clear" color="success" (click)="updatePerson(person._id, editingData)">
-                      <ion-icon slot="icon-only" name="checkmark"></ion-icon>
-                    </ion-button>
-                    <ion-button fill="clear" color="medium" (click)="cancelEdit()">
-                      <ion-icon slot="icon-only" name="close"></ion-icon>
-                    </ion-button> -->
-                  <!-- </div> -->
                 </td>
               </tr>
             </tbody>
