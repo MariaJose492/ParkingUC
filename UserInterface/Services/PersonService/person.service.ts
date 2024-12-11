@@ -16,6 +16,7 @@ export class PersonService {
 
   createPerson(person: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/createPerson/`, person);
+    console.log('Persona creada:', person);
   }
 
   updatePerson(personId: string, updateData: any, charge: any): Observable<any> {

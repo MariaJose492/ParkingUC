@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
-import { AuthService } from 'services/AuthService/auth.service';
+import { AuthService } from 'Services/AuthService/auth.service';
 // import { IonSearchbar } from '@ionic/angular/standalone';
 
 import {
@@ -20,8 +20,8 @@ import {
   IonSearchbar
 } from '@ionic/angular/standalone';
 import { style } from '@angular/animations';
-import { PersonService } from 'services/personService/person.service';
-import { RegisterService } from 'services/RegisterService/register.service';
+import { PersonService } from 'Services/PersonService/person.service';
+import { RegisterService } from 'Services/RegisterService/register.service';
 
 @Component({
   selector: 'app-vehicle-exit',

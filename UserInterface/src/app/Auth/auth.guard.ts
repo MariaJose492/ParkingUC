@@ -1,7 +1,7 @@
 import { inject, Inject } from '@angular/core';
 import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { PersonService } from 'services/personService/person.service';
-import { AuthService } from 'services/AuthService/auth.service';
+import { PersonService } from 'Services/PersonService/person.service';
+import { AuthService } from 'Services/AuthService/auth.service';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 

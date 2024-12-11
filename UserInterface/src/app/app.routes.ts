@@ -2,7 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { authGuard } from './Auth/auth.guard';
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+//import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -18,10 +18,8 @@ export const routes: Routes = [
   },
   {
     path: 'home-page',
-    loadComponent: () => import('./home-page/home-page.page').then(m => m.HomePagePage),
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage),
     data: { public: true } 
-    path: 'edit-user',
-    loadComponent: () => import('./edit-user/edit-user.page').then( m => m.EditUserPage)
   },
   {
     path: 'create-person',
@@ -72,12 +70,12 @@ export const routes: Routes = [
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
     },
-    loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)
+    // loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)j
   },
-  {  
-    path: 'in-out',
-    loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
-  },
+  // {  
+  //   path: 'in-out',
+  //   loadComponent: () => import('./in-out/in-out.page').then( m => m.InOutPage)
+  // },
   // {
   //   path: 'in-out',
   //   loadComponent: () => import('./in-out/in-out.page').then(m => m.InOutPage),
@@ -87,11 +85,12 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./login/login.page').then(m => m.LoginPage),
-    canActivate: [authGuard],
-    data: { 
-      requiresAuth: true,
-      roles: ['Vigilante', 'Administrador'] 
-    }
+    data: { public: true }
+    // canActivate: [authGuard],
+    // data: { 
+    //   requiresAuth: true,
+    //   roles: ['Vigilante', 'Administrador'] 
+    // }
   },
   {
     path: 'list-register',

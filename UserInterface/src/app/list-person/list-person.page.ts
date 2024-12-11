@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash, createOutline } from 'ionicons/icons';
-import { AuthService } from 'Services/AuthService/auth.service';
+// import { AuthService } from 'Services/AuthService/auth.service';
 import { PersonService } from 'Services/PersonService/person.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class ListPersonPage implements OnInit {
   // editingPersonId: string | null = null; // En lugar de editingPerson
   // editingData: any = null; // Para almacenar
 
-  constructor(private router: Router, private personService: PersonService, public authService: AuthService) {
+  constructor(private router: Router, private personService: PersonService) {
     addIcons({
       'home': home,
       'arrow-undo': arrowUndo,
@@ -30,9 +30,9 @@ export class ListPersonPage implements OnInit {
     });
   }
 
-  showEditButtons(): boolean {
-    return this.authService.canEditPerson();
-  }
+  // showEditButtons(): boolean {
+  //   return this.authService.canEditPerson();
+  // }
   ngOnInit() {
     this.listPerson();
   }

@@ -5,7 +5,7 @@ import { IonContent, IonHeader, IonGrid, IonRow, IonCardTitle, IonButton, IonIco
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo, trash } from 'ionicons/icons';
-import { AuthService } from 'Services/AuthService/auth.service';
+// import { AuthService } from 'Services/AuthService/auth.service';
 import { NoveltyService } from 'Services/NoveltyService/novelty.sevice';
 
 @Component({
@@ -18,7 +18,7 @@ import { NoveltyService } from 'Services/NoveltyService/novelty.sevice';
 export class ListNoveltyPage implements OnInit {
   novelties: any[] = [];
 
-  constructor(private router: Router, private noveltyService: NoveltyService, public authService: AuthService) {
+  constructor(private router: Router, private noveltyService: NoveltyService) {
     addIcons({
       'home': home,
       'arrow-undo': arrowUndo,
