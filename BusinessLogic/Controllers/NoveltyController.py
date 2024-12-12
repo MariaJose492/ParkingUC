@@ -47,7 +47,7 @@ async def createNoveltyController(noveltyData: Novelty):
             f"\"{noveltyData.description}\"\n\n"
             f"Por favor, hágase presente en el lugar.\n\n"
             f"Atentamente,\n"
-            f"PARKING UC"
+            f"Equipo Parking UC"
         )
 
         # Consumir el microservicio de envío de mensajes

@@ -7,3 +7,6 @@ httpx
 opencv-python
 motor
 pytesseract
+pymongo
+pytest
+pytest-asyncio

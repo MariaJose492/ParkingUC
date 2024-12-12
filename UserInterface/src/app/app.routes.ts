@@ -38,6 +38,7 @@ export const routes: Routes = [
   {
     path: 'novelty',
     loadComponent: () => import('./novelty/novelty.page').then(m => m.NoveltyPage),
+    //data: { public: true }
     canActivate: [authGuard],
     data: { 
       requiresAuth: true,
@@ -113,7 +114,8 @@ export const routes: Routes = [
   {
     path: 'parking',
     loadComponent: () => import('./parking/parking.page').then( m => m.ParkingPage)
-  },  {
+  },
+  {
     path: 'menu',
     loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage)
   },
