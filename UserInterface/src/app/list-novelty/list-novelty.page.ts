@@ -34,6 +34,10 @@ export class ListNoveltyPage implements OnInit {
     this.router.navigate(['/parking']);
   }
 
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
+
   deleteNovelty(noveltyId: string): void {
     this.noveltyService.deleteNovelty(noveltyId).subscribe(
       (response) => {

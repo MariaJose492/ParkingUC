@@ -33,6 +33,10 @@ export class InOutPage implements OnInit {
     this.router.navigate(['/parking']);
   }
 
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
+
   goToEntrada() {
     this.router.navigate(['/camera']);  // Redirige a la página de entrada
   }

@@ -35,6 +35,10 @@ export class ListRegisterPage implements OnInit {
     this.router.navigate(['/parking']);
   }
 
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
+
   deleteRegister(vehiclePlate: string): void {
     this.registerService.deleteRegister(vehiclePlate).subscribe(
       (response) => {

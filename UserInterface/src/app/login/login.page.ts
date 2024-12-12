@@ -37,6 +37,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginPage {
   email: string = '';
   password: string = '';
+  charge: string = '';
 
   constructor(private loginService: LoginService, private router: Router, private alertController: AlertController) { 
     addIcons({
@@ -51,11 +52,13 @@ export class LoginPage {
 
   async onLogin() {
     try {
-        const response = await this.loginService.login(this.email, this.password).toPromise();
+        const response = await this.loginService.login(this.email, this.password, this.charge).toPromise();
 
         if (response.message === "Inicio de sesión exitoso") {  
+            localStorage.setItem('userCharge', response.user.charge);
+            console.log("prueba 1", response.user.charge);
+            // localStorage.setItem('token', response.user.token || ""); 
             await this.showAlert('Bienvenido', '¡Inicio de sesión exitoso!');
-            // localStorage.setItem('token', response.user.token || "");  
             this.router.navigate(['/menu']);
         } else {
             await this.showAlert('Error', 'Usuario o contraseña incorrectos');

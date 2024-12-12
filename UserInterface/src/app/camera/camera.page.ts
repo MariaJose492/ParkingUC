@@ -26,8 +26,6 @@ import {
   IonSelect,
   IonSelectOption
 } from '@ionic/angular/standalone';
-
-
 import { RegisterService } from 'Services/RegisterService/register.service';
 import { CameraService } from 'Services/CameraService/camera.service';
 
@@ -223,6 +221,10 @@ export class CameraPage implements OnInit, OnDestroy {
 
   goHome() {
     this.router.navigate(['/parking']);
+  }
+
+  goExit(){
+    this.router.navigate(['/in-out'])
   }
 
 }

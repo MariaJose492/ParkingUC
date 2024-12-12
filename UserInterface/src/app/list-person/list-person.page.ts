@@ -41,6 +41,10 @@ export class ListPersonPage implements OnInit {
     this.router.navigate(['/parking']);
   }
 
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
+
   deletePerson(personId: string): void {
     this.personService.deletePerson(personId).subscribe(
       (response) => {
