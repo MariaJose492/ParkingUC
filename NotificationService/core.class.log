@@ -1,0 +1,44 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '573163566911@s.whatsapp.net',
+    fromMe: false,
+    id: '5C755D7E0AEE2C190974FF593631D742',
+    participant: undefined
+  },
+  messageTimestamp: 1733977228,
+  pushName: 'Lina Nieto Alarcon',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'hola',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'hola',
+  name: 'Lina Nieto Alarcon',
+  from: '573163566911'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_c6ce92f4-001b-4f86-bf75-80fc41001ba4',
+  keyword: 'key_921a70fe-eec9-4e64-b3ec-2540a95c15c6',
+  answer: 'Hola, bienvenido a Parking UC 🚗🅿️. ¿En qué puedo ayudarte?',
+  options: {
+    media: undefined,
+    buttons: [],
+    capture: false,
+    delay: 0,
+    idle: undefined,
+    ref: undefined,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '134e8e06dc33ea2b81ffe226484c7905'
+}

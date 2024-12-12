@@ -29,4 +29,11 @@ NOTIFICACIONES
 *pip install requests
 * npm install express @bot-whatsapp/bot @bot-whatsapp/provider-baileys ts-node typescript
 
+Pruebas Unitarias
+
+* pip install pytest pytest-asyncio
+* pip install pydantic
+
+
+
 

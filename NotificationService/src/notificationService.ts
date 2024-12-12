@@ -2,7 +2,7 @@ import { createBot, createFlow, MemoryDB, createProvider, addKeyword } from "@bo
 import { BaileysProvider, handleCtx } from "@bot-whatsapp/provider-baileys";
 
 
-const flowBienvenida = addKeyword('hola').addAnswer('Hola, bienvenido');
+const flowBienvenida = addKeyword('hola').addAnswer('Hola, bienvenido a Parking UC 🚗🅿️. ¿En qué puedo ayudarte?');
 
 const main = async () => {
 
@@ -13,8 +13,6 @@ const main = async () => {
         const body = req.body;
         const phone = body.phone;
         const message = body.message;
-
-        console.log('Enviando mensaje a', phone, message);
 
         await bot.sendMessage(phone, message,{});
 

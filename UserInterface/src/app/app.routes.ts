@@ -40,6 +40,7 @@ export const routes: Routes = [
   {
     path: 'novelty',
     loadComponent: () => import('./novelty/novelty.page').then(m => m.NoveltyPage),
+    //data: { public: true }
     canActivate: [authGuard],
     data: { 
       requiresAuth: true,
