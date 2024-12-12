@@ -4,9 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { home, arrowUndo } from 'ionicons/icons';
-import { AuthService } from 'Services/AuthService/auth.service';
-// import { IonSearchbar } from '@ionic/angular/standalone';
-
 import {
   IonContent,
   IonHeader,
@@ -17,11 +14,11 @@ import {
   IonCardTitle,
   IonSelect,
   IonSelectOption,
-  IonSearchbar
-} from '@ionic/angular/standalone';
-import { style } from '@angular/animations';
+  IonicModule
+} from '@ionic/angular';
 import { PersonService } from 'Services/PersonService/person.service';
 import { RegisterService } from 'Services/RegisterService/register.service';
+import { LoginService } from 'Services/LoginService/login.service';
 
 @Component({
   selector: 'app-vehicle-exit',
@@ -29,17 +26,11 @@ import { RegisterService } from 'Services/RegisterService/register.service';
   styleUrls: ['./vehicle-exit.page.scss'],
   standalone: true,
   providers: [DatePipe],
-  imports: [IonContent,
-    IonHeader,
-    IonButton,
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonSelectOption,
-    IonCardTitle,
-    CommonModule,
+  imports: [
     FormsModule,
-    IonSelect]
+    IonicModule,
+    CommonModule
+  ]
 })
 export class VehicleExitPage implements OnInit {
 
@@ -47,7 +38,7 @@ export class VehicleExitPage implements OnInit {
     private registerService: RegisterService,
     private personService: PersonService,
     private datePipe: DatePipe,
-    public authService: AuthService,
+    public loginService: LoginService,
     private router: Router) {
     addIcons({
       'home': home,
@@ -70,19 +61,13 @@ export class VehicleExitPage implements OnInit {
 
   customAlertOptions = {
     header: 'Vehículos en parqueadero',
-    // subHeader: 'Selecciona una placa',
     cssClass: 'custom-alert',
     interface: 'action-sheet',
     translucent: true
   };
 
   ngOnInit(): void {
-     // Verificar permisos
-     if (!this.authService.canAccessVehicleManagement()) {
-      // Redirigir o mostrar mensaje
-      alert('No tienes permiso para acceder a esta página');
-      this.router.navigate(['/home']);
-    }
+    this.loadVehicles();
   }
 
 
@@ -172,6 +157,10 @@ export class VehicleExitPage implements OnInit {
 
   goHome() {
     this.router.navigate(['/home']);
+  }
+
+  goMenu(){
+    this.router.navigate(['/menu'])
   }
 
 }
