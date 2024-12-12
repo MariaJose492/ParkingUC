@@ -39,4 +39,8 @@ export class LoginService {
     const userCharge = this.getUserCharge();
     return userCharge ? ['Vigilante', 'Administrador'].includes(userCharge) : false;
   }
+
+  logout(): void {
+    localStorage.removeItem('user');
+  }
 }

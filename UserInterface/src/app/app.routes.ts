@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
+    path: 'home',
+    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
     path: 'parking',
     loadComponent: () => import('./parking/parking.page').then((m) => m.ParkingPage),
     data: { public: true } 
@@ -47,6 +49,11 @@ export const routes: Routes = [
   {
     path: 'vehicle-exit',
     loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then(m => m.VehicleExitPage),
+    canActivate: [authGuard],
+    data: { 
+      requiresAuth: true,
+      roles: ['Vigilante', 'Administrador'] 
+    },
     // canActivate: [authGuard],
     // data: { 
     //   requiresAuth: true,
@@ -60,6 +67,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
+    },
     }
   },
   {
@@ -69,6 +77,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
+    },
     }
     // loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)j
   },
@@ -99,6 +108,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
+    },
     }
   },
   {
@@ -108,6 +118,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
+    },
     }
   },
   {

@@ -26,8 +26,6 @@ import {
   IonSelect,
   IonSelectOption
 } from '@ionic/angular/standalone';
-
-
 import { RegisterService } from 'Services/RegisterService/register.service';
 import { CameraService } from 'Services/CameraService/camera.service';
 
