@@ -6,7 +6,7 @@
 
     <div class="header-content">
       <div>
-        <ion-button class="icon" fill="clear" (click)="goHome()">
+        <ion-button class="icon" fill="clear" (click)="goMenu()">
           <ion-icon name="arrow-undo"></ion-icon>
         </ion-button>
         <ion-button class="icon" fill="clear" (click)="goHome()">
@@ -24,50 +24,43 @@
       <p>Formulario de Registro de salida de parqueaderos Universidad de Caldas</p>
     </div>
 
-    <!-- <div class="content">
+    <div class="content">
+      <!-- Select de Vehículos -->
       <ion-label class="label" position="floating">Placa del Vehículo</ion-label>
       <ion-item class="label-input">
         <ion-select [(ngModel)]="selectedPlate" (ionChange)="onPlateChange()" interface="action-sheet"
           [interfaceOptions]="customAlertOptions" placeholder="Seleccionar placa">
           <ion-select-option *ngFor="let plate of vehicles" [value]="plate">
-            {{plate}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item> -->
-    <div class="content">
-      <ion-label class="label" position="floating">Placa del Vehículo</ion-label>
-      <ion-item class="label-input">
-        <ion-select formControlName="selectedPlate" (ionChange)="onPlateChange()" interface="action-sheet"
-          [interfaceOptions]="customAlertOptions" placeholder="Seleccionar placa">
-          <ion-select-option *ngFor="let plate of vehicles" [value]="plate">
-            {{plate}}
+            {{ plate }}
           </ion-select-option>
         </ion-select>
       </ion-item>
+
+      <!-- Hora de ingreso (lectura de datos desde el backend) -->
+      <ion-label class="label">Hora de Ingreso</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.dateTimeEntrance" readonly></ion-input>
+      </ion-item>
+
+      <!-- Nombre de la persona -->
+      <ion-label class="label">Nombre</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.personName" readonly></ion-input>
+      </ion-item>
+
+      <!-- Cargo de la persona -->
+      <ion-label class="label">Cargo</ion-label>
+      <ion-item class="label-input">
+        <ion-input [(ngModel)]="register.personCharge" readonly></ion-input>
+      </ion-item>
     </div>
 
+    <!-- Botón para Registrar Salida -->
+    <div class="enter-button">
+      <ion-button class="enter-button" (click)="updateRegister()" [disabled]="!selectedPlate">
+        Registrar Salida
+      </ion-button>
+    </div>
 
-    <ion-label class="label">Hora de Ingreso</ion-label>
-    <ion-item class="label-input">
-      <ion-input [(ngModel)]="register.dateTimeEntrance" readonly></ion-input>
-    </ion-item>
-
-    <ion-label class="label">Nombre</ion-label>
-    <ion-item class="label-input">
-      <ion-input [(ngModel)]="register.personName" readonly></ion-input>
-    </ion-item>
-
-    <ion-label class="label">Cargo</ion-label>
-    <ion-item class="label-input">
-      <ion-input [(ngModel)]="register.personCharge" readonly></ion-input>
-    </ion-item>
   </div>
-
-  <div class="enter-button">
-    <ion-button class="enter-button" (click)="updateRegister()" [disabled]="!selectedPlate">
-      Registrar Salida
-    </ion-button>
-  </div>
-  <!-- </div> -->
-
 </ion-content>

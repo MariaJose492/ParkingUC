@@ -6,8 +6,8 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: 'parking',
+    loadComponent: () => import('./parking/parking.page').then((m) => m.ParkingPage),
     data: { public: true } 
   },
   {
@@ -47,11 +47,11 @@ export const routes: Routes = [
   {
     path: 'vehicle-exit',
     loadComponent: () => import('./vehicle-exit/vehicle-exit.page').then(m => m.VehicleExitPage),
-    canActivate: [authGuard],
-    data: { 
-      requiresAuth: true,
-      roles: ['Vigilante', 'Administrador'] 
-    },
+    // canActivate: [authGuard],
+    // data: { 
+    //   requiresAuth: true,
+    //   roles: ['Vigilante', 'Administrador'] 
+    // }
   },
   {
     path: 'in-out',
@@ -60,7 +60,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
-    },
+    }
   },
   {
     path: 'list-person',
@@ -69,7 +69,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
-    },
+    }
     // loadComponent: () => import('./list-person/list-person.page').then( m => m.ListPersonPage)j
   },
   // {  
@@ -99,7 +99,7 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
-    },
+    }
   },
   {
     path: 'list-novelty',
@@ -108,14 +108,20 @@ export const routes: Routes = [
     data: { 
       requiresAuth: true,
       roles: ['Vigilante', 'Administrador'] 
-    },
+    }
   },
   {
     path: 'parking',
     loadComponent: () => import('./parking/parking.page').then( m => m.ParkingPage)
-  },  {
+  },
+  {
     path: 'menu',
-    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage)
+    loadComponent: () => import('./menu/menu.page').then( m => m.MenuPage),
+    canActivate: [authGuard],
+    data: { 
+      requiresAuth: true,
+      roles: ['Vigilante', 'Administrador'] 
+    }
   },
 
 
