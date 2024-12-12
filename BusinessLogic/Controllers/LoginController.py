@@ -17,5 +17,6 @@ async def login(email: str, password: str):
     return {
         "id": str(user["_id"]),
         "email": user["email"],
-        "name": user.get("name", "Usuario")
+        "name": user.get("name", "Usuario"),
+        "charge": user["charge"]
     }

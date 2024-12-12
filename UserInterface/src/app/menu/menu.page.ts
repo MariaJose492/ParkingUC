@@ -34,4 +34,8 @@ export class MenuPage implements OnInit {
     this.router.navigate(['/parking'])
   }
 
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
+
 }

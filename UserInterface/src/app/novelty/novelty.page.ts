@@ -76,4 +76,8 @@ export class NoveltyPage implements OnInit {
   goHome() {
     this.router.navigate(['/parking']);
   }
+
+  goMenu(){
+    this.router.navigate(['/menu'])
+  }
 }
